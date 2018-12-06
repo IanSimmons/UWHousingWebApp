@@ -8,6 +8,9 @@ namespace HousingConsoleApp
 {
     class Program
     {
+
+        private static PaymentHistoryViewer _PaymentHistoryViewer;
+
         static void Main(string[] args)
         {
         }
@@ -21,7 +24,6 @@ namespace HousingConsoleApp
             Console.WriteLine("1. Create Student");
             Console.WriteLine("2. Create Payment");
             Console.WriteLine("3. Payment Summary");
-            Console.WriteLine("4. Building Capacity Report");
             Console.WriteLine("");
             Console.WriteLine("9. Exit");
 
@@ -41,14 +43,7 @@ namespace HousingConsoleApp
                 string menu_return;
                 do
                 {
-                    menu_return = PaymentSummaryMenu();
-                } while (menu_return != "9");
-            }
-            else if (selection == "4")
-            {
-                do
-                {
-                    menu_return = BuildingCapacityMenu();
+                    menu_return = PaymentHistoryMenu();
                 } while (menu_return != "9");
             }
             else if (selection != "9")
@@ -67,8 +62,50 @@ namespace HousingConsoleApp
         private static void CreateStudent()
         {
 
-            int student_id, room_no;
-            string first_name, last_name, building, meal_plan;
+            int room_no;
+            long student_id;
+            string first_name, last_name, building_name, meal_plan;
+
+            IList<BuildingViewModel> building;
+
+            WriteHeader();
+            WriteCreateStudentHeader();
+           
+            //get student ID
+            Console.WriteLine("Enter Student ID: ");
+            string str_student_id = (Console.ReadLine());
+
+            //validate student ID
+            if (!Int64.TryParse(str_student_id, out student_id) || student_id > 9079999999 || student_id < 9070000000)
+            {
+                Console.WriteLine("Invalid student ID.  Press any key...");
+                Console.ReadKey();
+                return;
+            }
+
+
+            //write building names on screen
+            for (var i = 0; i < building.Count; i++)
+            {
+                Console.WriteLine("{0}. {1} {2}", building[i]);
+            }
+            CommandPrompt("Select building");
+            building_name = Console.ReadLine();
+
+            //validate building name
+            if (building.Contains(building_name))
+            {
+                Console.WriteLine("Invalid building entry.  Press any key...");
+                Console.ReadKey();
+                return;
+            }
+
+            //room
+
+
+            //summary screen
+            
+
 
 
 
@@ -78,9 +115,109 @@ namespace HousingConsoleApp
         //prompt for studid and payment
 
 
-        //building capcity report
+        //student payment history report
+        public static string PaymentHistoryMenu()
+        {
+            WriteHeader();
+            Console.WriteLine("ORDER SUMMARY:");
+            Console.WriteLine();
+            Console.WriteLine("1. Run Order Summary");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("9. Return to the Main Menu");
+            CommandPrompt("Enter menu option");
+            string selection = Console.ReadLine();
 
-        //stduent payment history report
+            if (selection == "1")
+            {
+                RunPaymentHistory();
+            }
+            else if (selection != "9")
+            {
+                Console.WriteLine("Invalid entry.");
+                Console.WriteLine("Press any key....");
+                Console.ReadKey();
+
+            }
+
+            return selection;
+
+
+
+        }
+
+        //runs the payment history
+        private static void RunPaymentHistory()
+        {
+            long student_id;
+
+            WriteHeader();
+
+            Console.WriteLine("Enter student ID: ");
+            string str_student_id = (Console.ReadLine());
+
+            //validate student ID
+            if (!Int64.TryParse(str_student_id, out student_id) || student_id > 9079999999 || student_id < 9070000000)
+            {
+                Console.WriteLine("Invalid student ID.  Press any key...");
+                Console.ReadKey();
+                return;
+            }
+            else
+            {
+                
+                //display student name and ask for confirmation
+                
+                //display payment history
+                IList<PaymentHistoryViewModel> history = _paymentHistoryViewer.Get
+                
+                Console.Clear();
+                Console.WriteLine("Payment History for " + first_name + last_name);
+                Console.WriteLine("###############################################################################################");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+        //Write Header
+        private static void WriteHeader()
+        {
+            Console.Clear();
+            Console.WriteLine("#### UW Housing Resident Management System ####");
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        private static void WriteCreateStudentHeader()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Create New Student");
+            Console.WriteLine("#######################");
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+        
+
+
+
+
+
+
+
+
+
 
     }
 }
