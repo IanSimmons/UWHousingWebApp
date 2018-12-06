@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingConsoleApp", "HousingConsoleApp\HousingConsoleApp\HousingConsoleApp.csproj", "{C850A056-D57A-422A-BB33-402CEAD857FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingCore", "HousingCore\HousingCore\HousingCore.csproj", "{2DB0671E-DA03-49B3-BE38-227E938843A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C850A056-D57A-422A-BB33-402CEAD857FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C850A056-D57A-422A-BB33-402CEAD857FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2117CE8-8C07-4A6C-80D2-444F80BC0A06}
+	EndGlobalSection
+EndGlobal
