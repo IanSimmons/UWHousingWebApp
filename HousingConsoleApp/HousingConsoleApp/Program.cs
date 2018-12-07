@@ -70,7 +70,7 @@ namespace HousingConsoleApp
 
             WriteHeader();
             WriteCreateStudentHeader();
-           
+
             //get student ID
             Console.WriteLine("Enter Student ID: ");
             string str_student_id = (Console.ReadLine());
@@ -83,13 +83,18 @@ namespace HousingConsoleApp
                 return;
             }
 
+            //input first and last name
+            Console.WriteLine("Enter student first name: ");
+            first_name = Console.ReadLine();
+            Console.WriteLine("Enter student last name: ");
+            last_name = Console.ReadLine();
 
             //write building names on screen
             for (var i = 0; i < building.Count; i++)
             {
                 Console.WriteLine("{0}. {1} {2}", building[i]);
             }
-            CommandPrompt("Select building");
+            CommandPrompt("Type building name: ");
             building_name = Console.ReadLine();
 
             //validate building name
@@ -100,11 +105,33 @@ namespace HousingConsoleApp
                 return;
             }
 
-            //room
+            //room TODO
+            for (var i = 0; i < ...)
+            {
+                Console.WriteLine("Open rooms in " + building_name);
+                Console.WriteLine("{0}. {1} {2}", room[i]);
+            }
+            CommandPrompt("Select open room: ");
+            room_no = Console.ReadLine();
 
 
-            //summary screen
-            
+            //summary screen TODO
+
+            //confirmation
+            CommandPrompt("Is this correct? (Y/N)");
+            string str_response = Console.ReadLine();
+
+            //pass to DTO
+            if (str_response.ToLower() == "y")
+            {
+                NewStudentDTO newStudent = new NewStudentDTO()
+                {
+                    //TODO
+                }
+
+            }
+
+
 
 
 
