@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingConsoleApp", "HousingConsoleApp\HousingConsoleApp\HousingConsoleApp.csproj", "{C850A056-D57A-422A-BB33-402CEAD857FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingCore", "HousingCore\HousingCore\HousingCore.csproj", "{2DB0671E-DA03-49B3-BE38-227E938843A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingCore", "Housing.Core\HousingCore.csproj", "{A58160EB-17EC-4F0A-86FC-A689787AAF8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C850A056-D57A-422A-BB33-402CEAD857FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DB0671E-DA03-49B3-BE38-227E938843A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

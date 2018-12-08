@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HousingCore
+namespace Housing.Core.BLL
 {
-    public class StudentDAO
+    class RoomViewer
     {
-        //create new student in database
 
-
+        //TODO
     }
 }

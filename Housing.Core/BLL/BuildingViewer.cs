@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HousingCore
+namespace Housing.Core.BLL
 {
-    public class StudentDAO
+    class BuildingViewer
     {
 
-
+        //TODO
 
     }
 }

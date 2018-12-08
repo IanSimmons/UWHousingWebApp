@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2DB0671E-DA03-49B3-BE38-227E938843A0}</ProjectGuid>
+    <ProjectGuid>{A58160EB-17EC-4F0A-86FC-A689787AAF8C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HousingCore</RootNamespace>
-    <AssemblyName>HousingCore</AssemblyName>
+    <RootNamespace>Housing.Core</RootNamespace>
+    <AssemblyName>Housing.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BuildingViewer.cs" />
+    <Compile Include="BLL\NewStudentCreator.cs" />
     <Compile Include="BLL\PaymentHistoryViewer.cs" />
-    <Compile Include="Data\BuildingDAO.cs" />
-    <Compile Include="Data\PaymentDAO.cs" />
-    <Compile Include="Data\StudentDAO.cs" />
-    <Compile Include="Entities\BuildingViewModel.cs" />
-    <Compile Include="Entities\NewStudentDTO.cs" />
+    <Compile Include="BLL\RoomViewer.cs" />
+    <Compile Include="BLL\StudentViewer.cs" />
+    <Compile Include="Data\NewStudentDAO.cs" />
+    <Compile Include="Data\PaymentHistoryDAO.cs" />
+    <Compile Include="Entities\DTO\NewPaymentDTO.cs" />
+    <Compile Include="Entities\DTO\NewStudentDTO.cs" />
+    <Compile Include="Entities\Persistence\StudentDTO.cs" />
+    <Compile Include="Entities\ViewModels\PaymentHistoryViewModel.cs" />
+    <Compile Include="Entities\ViewModels\PaymentViewModel.cs" />
+    <Compile Include="Entities\ViewModels\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

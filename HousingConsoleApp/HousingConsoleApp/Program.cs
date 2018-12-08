@@ -9,8 +9,8 @@ namespace HousingConsoleApp
     class Program
     {
         //TODO
-        private static PaymentHistoryViewer _PaymentHistoryViewer;
-        private static StudentViewer _StudentViewer;
+        private static PaymentHistoryViewer _paymentHistoryViewer;
+        private static StudentViewer _studentViewer;
 
         private static NewStudentCreator _newStudentCreator;
 
@@ -72,12 +72,17 @@ namespace HousingConsoleApp
 
         private static void CreateStudent()
         {
-
             int room_number;
             long student_id;
             string first_name, last_name, building_name, meal_plan;
 
-            IList<BuildingViewModel> building;
+            if (_buildingViewer == null)
+                _buildingViewer = new BuildingViewer();
+            if (_roomViewer == null)
+                _roomViewer = new RoomViewer();
+
+            IList<BuildingViewModel> building.GetAllBuildings();
+            IList<RoomViewModel> rooms;
             //TODO ILists
 
             WriteHeader();
@@ -95,6 +100,8 @@ namespace HousingConsoleApp
                 return;
             }
 
+            //TODO check if student id is already in use
+
             //input first and last name
             Console.WriteLine("Enter student first name: ");
             first_name = Console.ReadLine();
@@ -110,37 +117,48 @@ namespace HousingConsoleApp
             building_name = Console.ReadLine();
 
             //validate building name
-            if (building.Contains(building_name))
+            if (!building.Contains(building_name))
             {
                 Console.WriteLine("Invalid building entry.  Press any key...");
                 Console.ReadKey();
                 return;
             }
 
+            //building is valid - grab open rooms
+            rooms = _roomViewer.GetOpenRoomsByBuilding(building_name);
+            
             //TODO room 
-            for (var i = 0; i < ...)
+            for (var i = 0; i < rooms.Count; i++)
             {
                 Console.WriteLine("Open rooms in " + building_name);
-                Console.WriteLine("{0}. {1} {2}", room[i]);
+                Console.WriteLine("{0}. {1} {2}", rooms[i]);
             }
             CommandPrompt("Select open room: ");
-            room_number = Console.ReadLine();
+            str_room_number = Console.ReadLine();
 
-            //write meal plan
-            Console.WriteLine("Enter student meal plan (1/2/3): ");
-            string str_meal_plan = Console.ReadLine();
-
-            //validate meal plan
-            if (//TODO)
+            //validate room
+            if (!Int32.TryParse(str_room_number, out room_number) || // TODO room_number > rooms.Max || store_id < 1)
             {
-                Console.WriteLine("Invalid meal plan.  Press any key...");
+                Console.WriteLine("Invalid room number.  Press any key...");
                 Console.ReadKey();
                 return;
             }
-            else
-            {
-                meal_plan = str_meal_plan;
-            }
+
+            //write meal plan
+            //Console.WriteLine("Enter student meal plan (1/2/3): ");
+            //string str_meal_plan = Console.ReadLine();
+
+            //validate meal plan
+            //if (//TODO)
+            //{
+            //    Console.WriteLine("Invalid meal plan.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
+            //else
+            //{
+            //    meal_plan = str_meal_plan;
+            //}
 
 
             //TODO summary screen
@@ -151,6 +169,7 @@ namespace HousingConsoleApp
             Console.WriteLine("Name: " + first_name + " " + last_name);
             Console.WriteLine("Building: " + building_name);
             Console.WriteLine("Room number: " + room_number);
+            //TODO meal plan
             CommandPrompt("Is this correct? (Y/N)");
             string str_response = Console.ReadLine();
 
@@ -163,7 +182,7 @@ namespace HousingConsoleApp
                     last_name = last_name,
                     building_name = building_name,
                     room_number = room_number
-                    meal_plan = meal_plan
+                    //TODO meal_plan = meal_plan
                 };
 
             }
@@ -218,34 +237,47 @@ namespace HousingConsoleApp
         {
             long student_id;
 
+            if (_studentViewer == null)
+                _studentViewer = new StudentViewer();
+            if (_paymentHistoryViewer == null)
+                _paymentHistoryViewer = new PaymentHistoryViewer();
+
+            IList<StudentViewModel> student;
+            IList<PaymentHistoryViewModel> history;
+
             WriteHeader();
 
             Console.WriteLine("Enter student ID: ");
             string str_student_id = (Console.ReadLine());
 
             //validate student ID
-            if (!Int64.TryParse(str_student_id, out student_id) || student_id > 9079999999 || student_id < 9070000000)
+            if (!Int64.TryParse(str_student_id, out student_id || //TODO doesn't contain))
             {
                 Console.WriteLine("Invalid student ID.  Press any key...");
                 Console.ReadKey();
                 return;
             }
-            else
-            {
-                
-                //display student name and ask for confirmation
-                
-                //display payment history
-                IList<PaymentHistoryViewModel> history = _paymentHistoryViewer.Get
+
+
+            //display student name and ask for confirmation
+            student = _studentViewer.GetStudent(student_id);
+            Console.WriteLine("Student name: {0} {1}", student.first_name, student.last_name);
+
+            //display payment history
+            history = _paymentHistoryViewer.GetPaymentHistory(student_id);
                 
                 Console.Clear();
-                Console.WriteLine("Payment History for " + first_name + last_name);
+                Console.WriteLine("Payment History for " + student.first_name + student.last_name);
                 Console.WriteLine("###############################################################################################");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
 
-            }
+            //get data
+            Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
+            //TODO
+
+        }
 
         }
 
