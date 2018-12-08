@@ -8,11 +8,22 @@ namespace HousingConsoleApp
 {
     class Program
     {
-
+        //TODO
         private static PaymentHistoryViewer _PaymentHistoryViewer;
+        private static StudentViewer _StudentViewer;
+
+        private static NewStudentCreator _newStudentCreator;
+
+            //viewer executes thing
+            //view model is the thing that gets returned
 
         static void Main(string[] args)
         {
+            string menu_return;
+            do
+            {
+                menu_return = MainMenu();
+            } while (menu_return != "9");
         }
 
         //main menu method
@@ -62,11 +73,12 @@ namespace HousingConsoleApp
         private static void CreateStudent()
         {
 
-            int room_no;
+            int room_number;
             long student_id;
             string first_name, last_name, building_name, meal_plan;
 
             IList<BuildingViewModel> building;
+            //TODO ILists
 
             WriteHeader();
             WriteCreateStudentHeader();
@@ -105,19 +117,40 @@ namespace HousingConsoleApp
                 return;
             }
 
-            //room TODO
+            //TODO room 
             for (var i = 0; i < ...)
             {
                 Console.WriteLine("Open rooms in " + building_name);
                 Console.WriteLine("{0}. {1} {2}", room[i]);
             }
             CommandPrompt("Select open room: ");
-            room_no = Console.ReadLine();
+            room_number = Console.ReadLine();
+
+            //write meal plan
+            Console.WriteLine("Enter student meal plan (1/2/3): ");
+            string str_meal_plan = Console.ReadLine();
+
+            //validate meal plan
+            if (//TODO)
+            {
+                Console.WriteLine("Invalid meal plan.  Press any key...");
+                Console.ReadKey();
+                return;
+            }
+            else
+            {
+                meal_plan = str_meal_plan;
+            }
 
 
-            //summary screen TODO
-
-            //confirmation
+            //TODO summary screen
+            WriteHeader();
+            WriteCreateStudentHeader();
+            Console.WriteLine("Student Details:");
+            Console.WriteLine("Student Id: " + student_id);
+            Console.WriteLine("Name: " + first_name + " " + last_name);
+            Console.WriteLine("Building: " + building_name);
+            Console.WriteLine("Room number: " + room_number);
             CommandPrompt("Is this correct? (Y/N)");
             string str_response = Console.ReadLine();
 
@@ -126,8 +159,12 @@ namespace HousingConsoleApp
             {
                 NewStudentDTO newStudent = new NewStudentDTO()
                 {
-                    //TODO
-                }
+                    first_name = first_name,
+                    last_name = last_name,
+                    building_name = building_name,
+                    room_number = room_number
+                    meal_plan = meal_plan
+                };
 
             }
 
@@ -139,12 +176,15 @@ namespace HousingConsoleApp
         }
 
         //create payment
-        //prompt for studid and payment
+            //prompt for studid and payment
 
 
         //student payment history report
         public static string PaymentHistoryMenu()
         {
+            if (_paymentHistoryViewer == null)
+                _PaymentHistoryViewer == new PaymentHisotryViewer();
+
             WriteHeader();
             Console.WriteLine("ORDER SUMMARY:");
             Console.WriteLine();
@@ -235,7 +275,14 @@ namespace HousingConsoleApp
             Console.WriteLine();
             Console.WriteLine();
         }
-        
+
+        private static void CommandPrompt(string prompt = "")
+        {
+            //put the cursor at the bottom of the screen
+            Console.CursorTop = Console.WindowHeight - 5;
+            Console.WriteLine(prompt == string.Empty ? "Enter command" : prompt + ":");
+            Console.Write("# ");
+        }
 
 
 
