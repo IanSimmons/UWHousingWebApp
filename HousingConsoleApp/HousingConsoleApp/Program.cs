@@ -88,9 +88,9 @@ namespace HousingConsoleApp
             if (_roomViewer == null)
                 _roomViewer = new RoomViewer();
 
-            UWHousing.Entities.ViewModels.IList<BuildingViewModel> building = _buildingViewer.GetAllBuildingname();
-            UWHousing.Entities.ViewModels.IList<RoomViewModel> rooms;
-            UWHousing.Entities.ViewModels.IList<StudentViewModel> students;
+            IList<BuildingViewModel> building = _buildingViewer.GetAllBuildingname();
+            IList<RoomViewModel> rooms;
+            IList<StudentViewModel> students;
             //TODO ILists
 
             WriteHeader();
@@ -131,13 +131,13 @@ namespace HousingConsoleApp
             CommandPrompt("Type building name: ");
             building_name = Console.ReadLine();
 
-            //validate building name
-            if (!building.Contains(building_name))
-            {
-                Console.WriteLine("Invalid building entry.  Press any key...");
-                Console.ReadKey();
-                return;
-            }
+            //TODO validate building name
+            //if (!building.Contains(building_name)) //TODO
+            //{
+            //    Console.WriteLine("Invalid building entry.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
 
             //building is valid - grab open rooms
             rooms = _roomViewer.GetOpenRoomsByBuilding(building_name);
@@ -151,14 +151,17 @@ namespace HousingConsoleApp
             CommandPrompt("Select open room: ");
             string str_room_number = Console.ReadLine();
 
-            //validate room
-            if (!Int32.TryParse(str_room_number, out room_number) || !rooms.Contains(room_number))
-            {
-                Console.WriteLine("Invalid room number.  Press any key...");
-                Console.ReadKey();
-                return;
-            }
-                       
+            //TODO validate room
+            //if (!Int32.TryParse(str_room_number, out room_number) || !rooms.Contains(room_number))
+            //{
+            //    Console.WriteLine("Invalid room number.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
+
+            //TODO Will not need once validation works
+            room_number = Convert.ToInt32(str_room_number);
+
             //TODO summary screen
             WriteHeader();
             WriteCreateStudentHeader();
@@ -249,14 +252,14 @@ namespace HousingConsoleApp
             {    
                 //display student name and ask for confirmation
                 student = _studentViewer.GetStudent(student_id);
-                Console.WriteLine("Student name: {0} {1}", student.first_name, student.last_name);
+                Console.WriteLine("Student name: {0} {1}", student.Firstname, student.Lastname);
 
                 CommandPrompt("Is this correct? (Y/N)");
                 string str_response = Console.ReadLine();
                 if (str_response.ToLower() == "y")
                 {
 
-                    IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
+                    IList<PaymentHistoryViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     //display payment history
                     //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
@@ -271,7 +274,7 @@ namespace HousingConsoleApp
                     //get data
                     Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
                     //TODO
-                    foreach (PaymentViewModel history in histories)
+                    foreach (PaymentHistoryViewModel history in histories)
                     {
                         PrintOutSummaryLine(history);
                     }
@@ -280,7 +283,7 @@ namespace HousingConsoleApp
         }
 
         /// <param name="history"></param>
-        private static void PrintOutSummaryLine(PaymentViewModel history)
+        private static void PrintOutSummaryLine(PaymentHistoryViewModel history)
         {
             // custom line formatting information is here:
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting

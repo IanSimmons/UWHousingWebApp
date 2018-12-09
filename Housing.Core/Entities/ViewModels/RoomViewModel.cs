@@ -14,12 +14,12 @@ namespace UWHousing.Entities.ViewModels
         public string Buildingname { get; set; }
         public int Roomnumber { get; set; }
 
-        public override string ToString()
-        {
-            if (Roomnumber == int.Empty)
-                return base.ToInt();
-            else
-                return int.Format("{0}", Roomnumber);
-        }
+        //public override int ToInt()
+        //{
+        //    if (Roomnumber == int.Empty)
+        //        return base.ToInt();
+        //    else
+        //        return int.Format("{0}", Roomnumber);
+        //}
     }
 }

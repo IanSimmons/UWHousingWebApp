@@ -31,7 +31,7 @@ namespace UWHousing.Data
                                student.Buildingname AS Buildingname,
                                srudent.Roomnumber AS Roomnumber)
                                
-                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)"
+                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)";
                     
                 connection.Execute(sql, new { newstudentDTO });
             }

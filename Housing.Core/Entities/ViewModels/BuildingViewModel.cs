@@ -11,14 +11,14 @@ namespace UWHousing.Entities.ViewModels
     /// </summary>
     public class BuildingViewModel
     {
-            public string Buildingname {get; set;}
+       public string Buildingname {get; set;}
 
-        public override string ToString()
-        {
+       public override string ToString()
+       {
             if (Buildingname == String.Empty)
                 return base.ToString();
             else
                 return string.Format("{0}", Buildingname);
-        }
+       }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UWHousing.Data;
 using UWHousing.Entities.Persistence;
+using UWHousing.Entities.ViewModels;
 using UWHousing.Enum;
 using UWHousing.Events;
 
@@ -26,7 +27,7 @@ namespace UWHousing.BLL
 
         ///Retrieves payment summary for student
 
-        public IList<PaymentHistory> GetPaymentHistory(StudentID) ///this seems pretty wrong
+        public IList<PaymentHistoryViewModel> GetPaymentHistory(StudentID) ///this seems pretty wrong
         {
             return _paymenthistoryDAO.GetPaymentHistory(StudentID);
         }
