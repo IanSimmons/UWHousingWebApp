@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWHousing.Entities.Persistence;
+using UWAdventure.Entities.Persistence;
 using Dapper;
 using UWHousing.Entities.DTO;
 using UWHousing.Entities.ViewModels;
@@ -20,14 +20,18 @@ namespace UWHousing.Data
         /// <summary>
         /// returns full order details for a single order
         /// </summary>
-        public PaymentHistoryViewModel GetRunPaymentHistory(int StudentID)
+        public string GetRunPaymentHistory(int StudentID)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
             {
                 connection.Open();
-                IList<PaymentHistoryViewModel> payments = QueryForGetRunPaymentHistory("payments.student_id=@student_id");//syntax will likely change
-                return payments.Count > 0 ? payments : null; //if this works it doesn't return everything we want/in the format we want it
-            }
+                return @"SELECT payment.paymentdate AS PaymentDate,
+                               payment.paymentenclose AS PaymentEnclosed
+                               FROM payment
+                               WHERE payment.StudentID = StudentID;";
+                connection.Execute(sql, new {newpaymentDTO});
+                
+                //IList<PaymentHistoryViewModel> payments = QueryForGetRunPaymentHistory("payments.student_id=@student_id");//syntax will likely change
+                //return payments.Count > 0 ? payments : null; //if this works it doesn't return everything we want/in the format we want it
         }
     }
-}
