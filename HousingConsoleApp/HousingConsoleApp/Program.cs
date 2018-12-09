@@ -81,7 +81,7 @@ namespace HousingConsoleApp
         {
             int room_number;
             long student_id;
-            string first_name, last_name, building_name, meal_plan;
+            string first_name, last_name, building_name;
 
             if (_buildingViewer == null)
                 _buildingViewer = new BuildingViewer();
@@ -158,24 +158,7 @@ namespace HousingConsoleApp
                 Console.ReadKey();
                 return;
             }
-
-            //write meal plan
-            //Console.WriteLine("Enter student meal plan (1/2/3): ");
-            //string str_meal_plan = Console.ReadLine();
-
-            //validate meal plan
-            //if (//TODO)
-            //{
-            //    Console.WriteLine("Invalid meal plan.  Press any key...");
-            //    Console.ReadKey();
-            //    return;
-            //}
-            //else
-            //{
-            //    meal_plan = str_meal_plan;
-            //}
-
-
+                       
             //TODO summary screen
             WriteHeader();
             WriteCreateStudentHeader();
@@ -204,12 +187,6 @@ namespace HousingConsoleApp
                 return;
 
             }
-
-
-
-
-
-
         }
 
         //create payment
@@ -243,11 +220,7 @@ namespace HousingConsoleApp
                 Console.ReadKey();
 
             }
-
             return selection;
-
-
-
         }
 
         //runs the payment history
@@ -286,7 +259,7 @@ namespace HousingConsoleApp
                 if (str_response.ToLower() == "y")
                 {
 
-                    IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id)
+                    IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     //display payment history
                     //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
