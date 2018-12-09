@@ -42,7 +42,7 @@ namespace UWHousing.Data
                 connection.Open();
                 string sql = @"SELECT student.Firstname AS Firstname, student.Lastname AS Lastname
                                FROM student
-                               WHERE StudentID = StudentID;";                               
+                               WHERE student.StudentID = StudentID;";                               
                     
                 connection.Execute(sql, new { newstudentDTO });
             }
