@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using UWHousing.Data;
 using UWHousing.Entities.Persistence;
 using UWHousing.Entities.ViewModels;
-using UWHousing.Enum;
-using UWHousing.Events;
 
 namespace UWHousing.BLL
 {

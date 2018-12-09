@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 using UWHousing.Data;
 using UWHousing.Entities.DTO;
 using UWHousing.Entities.Persistence;
-using UWHousing.Enum;
-using UWHousing.Events;
-
 namespace UWHousing.BLL
 {
     /// <summary>

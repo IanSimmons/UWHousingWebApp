@@ -23,7 +23,7 @@ namespace UWHousing.BLL
         /// <summary>
         /// Returns view models of all buildings
         /// </summary>
-        public IList<BuildingViewModel> GetAllBuildingname()
+        public string GetAllBuildingname()
         {
             return _buildingDAO.GetBuildingname();
         }

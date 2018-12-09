@@ -1,13 +1,12 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWAdventure.Entities.Persistence;
+using UWHousing.Entities.Persistence;
 using Dapper;
 using UWHousing.Entities.DTO;
 using UWHousing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using UWAHousing.Enum;
 
 namespace UWHousing.Data
 {
@@ -20,11 +19,15 @@ namespace UWHousing.Data
         /// <summary>
         /// Returns list of buildings
         /// </summary>
-        public BuildingViewModel GetBuildingname()
+        public string GetBuildingname()
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString))
             {
                 connection.Open();
-                IList<BuildingViewModel> names = QueryForGetBuildingname("building.buildingname=@*");
-                return names.Count > 0 ? names : null;
+                return @"SELECT Buildingname
+                         FROM Building";
+            }
+
         }
+    }
+}
