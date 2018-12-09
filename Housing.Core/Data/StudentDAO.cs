@@ -25,8 +25,13 @@ namespace UWHousing.Data
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
-                string sql Insert INTO Student (StudentID, Firstname, Lastname, Buildingname, Roomnumber)
-                    Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)
+                string sql = @"Insert INTO Student (student.StudentID AS StudentID, 
+                               student.Firstname AS Firstname,
+                               student.Lastname AS Lastname, 
+                               student.Buildingname AS Buildingname,
+                               srudent.Roomnumber AS Roomnumber)
+                               
+                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)"
                     
                 connection.Execute(sql, new { newstudentDTO });
             }
