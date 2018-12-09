@@ -16,5 +16,6 @@ namespace UWHousing.Entities.ViewModels
         //join in data code to join student table with payment table, dapper multiplemapping
         public PaymentHistoryViewModel PaymentAmount { get; set; }
         public DateTime RequestDate { get; set; } //don't need
+        public DateTime PaymentDate {get; set; }
     }
 }
