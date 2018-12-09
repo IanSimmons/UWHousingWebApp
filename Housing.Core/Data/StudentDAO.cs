@@ -31,7 +31,18 @@ namespace UWHousing.Data
                                student.Buildingname AS Buildingname,
                                srudent.Roomnumber AS Roomnumber)
                                
-                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)";
+                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)"
+                    
+                connection.Execute(sql, new { newstudentDTO });
+            }
+        public void GetStudent(long StudentID)
+        {
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
+            {
+                connection.Open();
+                string sql = @"SELECT student.Firstname AS Firstname, student.Lastname AS Lastname
+                               FROM student
+                               WHERE StudentID = StudentID;";                               
                     
                 connection.Execute(sql, new { newstudentDTO });
             }
