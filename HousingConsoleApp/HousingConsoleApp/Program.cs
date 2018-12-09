@@ -252,7 +252,7 @@ namespace HousingConsoleApp
             {    
                 //display student name and ask for confirmation
                 student = _studentViewer.GetStudent(student_id);
-                Console.WriteLine("Student name: {0} {1}", student., student.Lastname);
+                Console.WriteLine("Student name: {0}" , student);
 
                 CommandPrompt("Is this correct? (Y/N)");
                 string str_response = Console.ReadLine();

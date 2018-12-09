@@ -1,13 +1,12 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWAdventure.Entities.Persistence;
+using UWHousing.Entities.Persistence;
 using Dapper;
 using UWHousing.Entities.DTO;
 using UWHousing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using UWHousing.Enum;
 
 namespace UWHousing.Data
 {
@@ -31,21 +30,28 @@ namespace UWHousing.Data
                                student.Buildingname AS Buildingname,
                                srudent.Roomnumber AS Roomnumber)
                                
-                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)"
-                    
+                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)";
+
+
                 connection.Execute(sql, new { newstudentDTO });
             }
-        public void GetStudent(long StudentID)
+
+        }
+        public StudentViewModel GetStudent(long StudentID)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
                 string sql = @"SELECT student.Firstname AS Firstname, student.Lastname AS Lastname
                                FROM student
-                               WHERE student.StudentID = StudentID;";                               
-                    
+                               WHERE student.StudentID = StudentID;";
+
                 connection.Execute(sql, new { newstudentDTO });
+
+             
             }
-           
+
         }
-  
+
+    }
+}

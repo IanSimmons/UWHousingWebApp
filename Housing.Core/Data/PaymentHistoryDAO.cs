@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWAdventure.Entities.Persistence;
+using UWHousing.Entities.Persistence;
 using Dapper;
 using UWHousing.Entities.DTO;
 using UWHousing.Entities.ViewModels;
@@ -27,5 +27,7 @@ namespace UWHousing.Data
                 connection.Open();
                 IList<PaymentHistoryViewModel> payments = QueryForGetRunPaymentHistory("payments.student_id=@student_id");//syntax will likely change
                 return payments.Count > 0 ? payments : null; //if this works it doesn't return everything we want/in the format we want it
+            }
         }
     }
+}
