@@ -7,25 +7,24 @@ using UWHousing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using UWHousing.Enum;
+using UWAHousing.Enum;
 
 namespace UWHousing.Data
 {
     /// <summary>
-    /// Data access object for payment history 
+    /// Data access object for housing
     /// </summary>
-    public class PaymentDAO
+    public class BuildingDAO
     {
 
         /// <summary>
-        /// returns full order details for a single order
+        /// Returns list of buildings
         /// </summary>
-        public PaymentHistoryViewModel GetRunPaymentHistory(int StudentID)
+        public BuildingViewModel GetBuildingname()
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
             {
                 connection.Open();
-                IList<PaymentHistoryViewModel> payments = QueryForGetRunPaymentHistory("payments.student_id=@student_id");//syntax will likely change
-                return payments.Count > 0 ? payments : null; //if this works it doesn't return everything we want/in the format we want it
+                IList<BuildingViewModel> names = QueryForGetBuildingname("building.buildingname=@*");
+                return names.Count > 0 ? names : null;
         }
-    }

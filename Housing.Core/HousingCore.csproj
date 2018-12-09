@@ -46,13 +46,17 @@
     <Compile Include="BLL\PaymentHistoryViewer.cs" />
     <Compile Include="BLL\RoomViewer.cs" />
     <Compile Include="BLL\StudentViewer.cs" />
-    <Compile Include="Data\NewStudentDAO.cs" />
+    <Compile Include="Data\BuildingDAO.cs" />
+    <Compile Include="Data\StudentDAO.cs" />
     <Compile Include="Data\PaymentHistoryDAO.cs" />
+    <Compile Include="Data\RoomDAO.cs" />
     <Compile Include="Entities\DTO\NewPaymentDTO.cs" />
     <Compile Include="Entities\DTO\NewStudentDTO.cs" />
     <Compile Include="Entities\Persistence\StudentDTO.cs" />
+    <Compile Include="Entities\ViewModels\BuildingViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentHistoryViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentViewModel.cs" />
+    <Compile Include="Entities\ViewModels\RoomViewModel.cs" />
     <Compile Include="Entities\ViewModels\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

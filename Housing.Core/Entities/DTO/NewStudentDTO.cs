@@ -35,7 +35,7 @@ namespace UWHousing.Entities.DTO
         /// Meal plan info
         /// </summary>
        
-        public string meal_plan { get; set; }
+        public string Mealplan { get; set; } //will get axed
 
     }
 }

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UWHousing.BLL;
+using UWHousing.Entities.DTO;
+using UWHousing.Entities.ViewModels;
+using UWHousing.Entities.Persistence;
+using System.Data.SqlClient;
 
 namespace HousingConsoleApp
 {
@@ -11,11 +16,13 @@ namespace HousingConsoleApp
         //TODO
         private static PaymentHistoryViewer _paymentHistoryViewer;
         private static StudentViewer _studentViewer;
+        private static BuildingViewer _buildingViewer;
+        private static RoomViewer _roomViewer;
 
         private static NewStudentCreator _newStudentCreator;
 
-            //viewer executes thing
-            //view model is the thing that gets returned
+        //viewer executes thing
+        //view model is the thing that gets returned
 
         static void Main(string[] args)
         {
@@ -81,8 +88,9 @@ namespace HousingConsoleApp
             if (_roomViewer == null)
                 _roomViewer = new RoomViewer();
 
-            IList<BuildingViewModel> building.GetAllBuildings();
-            IList<RoomViewModel> rooms;
+            UWHousing.Entities.ViewModels.IList<BuildingViewModel> building = _buildingViewer.GetAllBuildingname();
+            UWHousing.Entities.ViewModels.IList<RoomViewModel> rooms;
+            UWHousing.Entities.ViewModels.IList<StudentViewModel> students;
             //TODO ILists
 
             WriteHeader();
@@ -101,6 +109,13 @@ namespace HousingConsoleApp
             }
 
             //TODO check if student id is already in use
+            students = _studentViewer.GetStudent(student_id);
+            if(students != null)
+            {
+                Console.WriteLine("Student ID already exists.Press any key...");
+                Console.ReadKey();
+                return;
+            }
 
             //input first and last name
             Console.WriteLine("Enter student first name: ");
@@ -126,7 +141,7 @@ namespace HousingConsoleApp
 
             //building is valid - grab open rooms
             rooms = _roomViewer.GetOpenRoomsByBuilding(building_name);
-            
+
             //TODO room 
             for (var i = 0; i < rooms.Count; i++)
             {
@@ -134,10 +149,10 @@ namespace HousingConsoleApp
                 Console.WriteLine("{0}. {1} {2}", rooms[i]);
             }
             CommandPrompt("Select open room: ");
-            str_room_number = Console.ReadLine();
+            string str_room_number = Console.ReadLine();
 
             //validate room
-            if (!Int32.TryParse(str_room_number, out room_number) || // TODO room_number > rooms.Max || store_id < 1)
+            if (!Int32.TryParse(str_room_number, out room_number) || !rooms.Contains(room_number))
             {
                 Console.WriteLine("Invalid room number.  Press any key...");
                 Console.ReadKey();
@@ -184,6 +199,9 @@ namespace HousingConsoleApp
                     room_number = room_number
                     //TODO meal_plan = meal_plan
                 };
+                Console.WriteLine("Student created successfully.");
+                Console.WriteLine("Press any key...");
+                return;
 
             }
 
@@ -195,14 +213,14 @@ namespace HousingConsoleApp
         }
 
         //create payment
-            //prompt for studid and payment
+        //prompt for studid and payment
 
 
         //student payment history report
         public static string PaymentHistoryMenu()
         {
             if (_paymentHistoryViewer == null)
-                _PaymentHistoryViewer == new PaymentHisotryViewer();
+                _paymentHistoryViewer == new PaymentHisotryViewer();
 
             WriteHeader();
             Console.WriteLine("ORDER SUMMARY:");
@@ -243,7 +261,7 @@ namespace HousingConsoleApp
                 _paymentHistoryViewer = new PaymentHistoryViewer();
 
             IList<StudentViewModel> student;
-            IList<PaymentHistoryViewModel> history;
+            //IList<PaymentHistoryViewModel> history;
 
             WriteHeader();
 
@@ -251,35 +269,57 @@ namespace HousingConsoleApp
             string str_student_id = (Console.ReadLine());
 
             //validate student ID
-            if (!Int64.TryParse(str_student_id, out student_id || //TODO doesn't contain))
-            {
+            if (!Int64.TryParse(str_student_id, out student_id) || !student.Contains(student_id))
+            { 
                 Console.WriteLine("Invalid student ID.  Press any key...");
                 Console.ReadKey();
                 return;
             }
+            else
+            {    
+                //display student name and ask for confirmation
+                student = _studentViewer.GetStudent(student_id);
+                Console.WriteLine("Student name: {0} {1}", student.first_name, student.last_name);
 
+                CommandPrompt("Is this correct? (Y/N)");
+                string str_response = Console.ReadLine();
+                if (str_response.ToLower() == "y")
+                {
 
-            //display student name and ask for confirmation
-            student = _studentViewer.GetStudent(student_id);
-            Console.WriteLine("Student name: {0} {1}", student.first_name, student.last_name);
+                    IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id)
 
-            //display payment history
-            history = _paymentHistoryViewer.GetPaymentHistory(student_id);
-                
-                Console.Clear();
-                Console.WriteLine("Payment History for " + student.first_name + student.last_name);
-                Console.WriteLine("###############################################################################################");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
+                    //display payment history
+                    //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
-            //get data
-            Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
-            //TODO
+                    Console.Clear();
+                    Console.WriteLine("Payment History for " + student.first_name + student.last_name);
+                    Console.WriteLine("###############################################################################################");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
 
+                    //get data
+                    Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
+                    //TODO
+                    foreach (PaymentViewModel history in histories)
+                    {
+                        PrintOutSummaryLine(history);
+                    }
+                }
+            }
         }
 
+        /// <param name="history"></param>
+        private static void PrintOutSummaryLine(PaymentViewModel history)
+        {
+            // custom line formatting information is here:
+            // https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting
+
+            //TODO Line formatting
+            Console.WriteLine("{0,-30} {1,9:c}", history.PaymentDate, history.PaymentAmount);
         }
+
+
 
 
 
@@ -324,8 +364,8 @@ namespace HousingConsoleApp
 
 
 
-
     }
+ 
 }
 
 

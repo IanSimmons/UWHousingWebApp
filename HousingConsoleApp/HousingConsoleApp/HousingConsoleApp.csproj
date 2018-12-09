@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Housing.Core\HousingCore.csproj">
+      <Project>{A58160EB-17EC-4F0A-86FC-A689787AAF8C}</Project>
+      <Name>HousingCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

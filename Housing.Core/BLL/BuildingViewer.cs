@@ -3,13 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UWHousing.Data;
+using UWHousing.Entities.ViewModels;
 
-namespace Housing.Core.BLL
+namespace UWHousing.BLL
 {
-    class BuildingViewer
+    /// <summary>
+    /// Business class for handling viewing of building view models
+    /// </summary>
+    public class BuildingViewer
     {
+        private readonly BuildingDAO _buildingDAO;
 
-        //TODO
+        public BuildingViewer()
+        {
+            _buildingDAO = new BuildingDAO();
+        }
+
+        /// <summary>
+        /// Returns view models of all buildings
+        /// </summary>
+        public IList<BuildingViewModel> GetAllBuildingname()
+        {
+            return _buildingDAO.GetBuildingname();
+        }
+
 
     }
 }
