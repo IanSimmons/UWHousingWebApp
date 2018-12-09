@@ -196,9 +196,6 @@ namespace HousingConsoleApp
         //student payment history report
         public static string PaymentHistoryMenu()
         {
-            if (_paymentHistoryViewer == null)
-                _paymentHistoryViewer == new PaymentHisotryViewer();
-
             WriteHeader();
             Console.WriteLine("ORDER SUMMARY:");
             Console.WriteLine();
