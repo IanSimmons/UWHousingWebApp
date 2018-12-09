@@ -26,8 +26,10 @@ namespace UWHousing.Data
             {
                 connection.Open();
 
-                string sql = //need query to pull available rooms
-                    ;
+                string sql = @"SELECT Roomnumber
+                               FROM Room
+                               WHERE Occupied LIKE 'No,*';";
+                
                 room = connection.Query<RoomViewModel>(sql, new { Buildingname })
                     .ToList();
 
