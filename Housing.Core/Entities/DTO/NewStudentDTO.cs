@@ -17,7 +17,7 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// Student ID
         /// </summary>
-        public int StudentID{ get; set; }
+        public long StudentID { get; set; }
 
         /// <summary>
         /// Student Name

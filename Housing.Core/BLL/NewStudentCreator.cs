@@ -36,6 +36,8 @@ namespace UWHousing.BLL
                 Buildingname = newStudentDTO.Buildingname,
                 Roomnumber = newStudentDTO.Roomnumber,
             };
+
+            _studentDAO.CreateStudent(studentDTO);
            
         }
     }

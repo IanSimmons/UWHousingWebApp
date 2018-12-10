@@ -21,17 +21,17 @@ namespace UWHousing.Data
         /// <summary>
         /// returns full order details for a single order
         /// </summary>
-        public IList<PaymentHistoryViewModel> GetPaymentHistory(long StudentID)
+        public IList<PaymentViewModel> GetPaymentHistory(long StudentID)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
             {
                 connection.Open();
-                string sql = @"SELECT Paymentdate AS PaymentDate,
-                               Paymentenclosed AS PaymentEnclosed
-                               FROM Payment
-                               WHERE Payment.StudentID = StudentID;";
-                payments = connection.Query<PaymentHistoryViewModel>(sql).AsList();
-                return payments;
+                string sql = "SELECT Firstname, Lastname, Paymentenclosed As PaymentAmount, Paymentdate FROM student AS A INNER JOIN payment AS B On A.StudentID = B.StudentID " +
+                                "Where A.StudentID = @StudentID";
+
+                var param = new { StudentID };
+
+                return connection.Query<PaymentViewModel>(sql, new { StudentID }).AsList();
 
                 //connection.Execute(sql, new {newpaymentDTO});
 

@@ -19,7 +19,7 @@ namespace UWHousing.Data
         /// <summary>
         /// Creates a new student
         /// </summary>
-        public void CreateStudent(NewStudentDTO newstudentDTO)
+        public void CreateStudent(StudentDTO newstudentDTO)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
@@ -33,7 +33,7 @@ namespace UWHousing.Data
                                Values (@StudentID, @Firstname, @Lastname, @Buildingname, @Roomnumber)";
 
 
-                connection.Execute(sql, new { newstudentDTO });
+                connection.Execute(sql, newstudentDTO);
             }
 
         }
@@ -42,10 +42,12 @@ namespace UWHousing.Data
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
-                return @"SELECT Firstname AS Firstname, Lastname AS Lastname
+                string sql = @"SELECT Firstname + ' ' + Lastname
                         FROM Student
-                        WHERE StudentID = StudentID;";
-             
+                        WHERE StudentID = @StudentID;";
+                return (string)connection.ExecuteScalar(sql, new {StudentID});
+                
+
             }
 
         }

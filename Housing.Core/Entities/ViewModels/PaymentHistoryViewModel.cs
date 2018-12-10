@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace UWHousing.Entities.ViewModels
 {
+
     /// <summary>
     /// View model for payments
     /// </summary>
     public class PaymentHistoryViewModel //iList of payments within
     {
-        string sql = "SELECT Firstname, Lastname FROM student AS A INNER JOIN payments AS B A.StudentID = B.StudentID;"; //may not need aliases
-        public PaymentHistoryViewModel StudentID { get; set; }
+        public PaymentHistoryViewModel()
+        {
+            payments = new List<PaymentViewModel>();
+        }
         //join in data code to join student table with payment table, dapper multiplemapping
-        public PaymentHistoryViewModel PaymentAmount { get; set; }
-        public DateTime RequestDate { get; set; } //don't need
-        public DateTime PaymentDate {get; set; }
+        public IList<PaymentViewModel> payments { get; set; }
+        //public string Firstname { get; set; }
+        //public string Lastname { get; set; }
+
+
     }
 }

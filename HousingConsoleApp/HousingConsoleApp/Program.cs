@@ -175,14 +175,22 @@ namespace HousingConsoleApp
             {
                 NewStudentDTO newStudent = new NewStudentDTO()
                 {
+                    StudentID = student_id,
                     Firstname = first_name,
                     Lastname = last_name,
                     Buildingname = building_name,
                     Roomnumber = room_number
                     //TODO meal_plan = meal_plan
                 };
+
+                var _creator = new NewStudentCreator();
+
+                _creator.CreateStudent(newStudent);
+
+
                 Console.WriteLine("Student created successfully.");
                 Console.WriteLine("Press any key...");
+                Console.ReadKey();
                 return;
 
             }
@@ -224,8 +232,8 @@ namespace HousingConsoleApp
         {
             long student_id;
 
-            //if (_studentViewer == null)
-            //    _studentViewer = new StudentViewer();
+            if (_studentViewer == null)
+                _studentViewer = new StudentViewer();
             if (_paymentHistoryViewer == null)
                 _paymentHistoryViewer = new PaymentHistoryViewer();
 
@@ -258,7 +266,7 @@ namespace HousingConsoleApp
                 if (str_response.ToLower() == "y")
                 {
 
-                    IList<PaymentHistoryViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
+                    IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     //display payment history
                     //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
@@ -273,23 +281,27 @@ namespace HousingConsoleApp
                     //get data
                     Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
                     //TODO
-                    foreach (PaymentHistoryViewModel history in histories)
+                    foreach (PaymentViewModel history in histories)
                     {
                         PrintOutSummaryLine(history);
+                        
                     }
-                }
+                    Console.ReadKey();
+            }
             //}
         }
 
         /// <param name="history"></param>
-        private static void PrintOutSummaryLine(PaymentHistoryViewModel history)
+        private static void PrintOutSummaryLine(PaymentViewModel history)
         {
             // custom line formatting information is here:
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting
 
             //TODO Line formatting
-            Console.WriteLine("{0,-30} {1,9:c}", history.PaymentDate, history.PaymentAmount);
-        }
+
+            Console.WriteLine("{0,-30} {1,9:c}", history.Paymentdate, history.PaymentAmount);
+
+        }   
 
 
 
