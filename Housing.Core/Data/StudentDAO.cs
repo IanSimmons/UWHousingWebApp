@@ -24,30 +24,27 @@ namespace UWHousing.Data
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
-                string sql = @"Insert INTO Student (student.StudentID AS StudentID, 
-                               student.Firstname AS Firstname,
-                               student.Lastname AS Lastname, 
-                               student.Buildingname AS Buildingname,
-                               srudent.Roomnumber AS Roomnumber)
+                string sql = @"Insert INTO Student (StudentID, 
+                               Firstname,
+                               Lastname, 
+                               Buildingname,
+                               Roomnumber)
                                
-                               Values (StudentID, Firstname, Lastname, Buildingname, Roomnumber)";
+                               Values (@StudentID, @Firstname, @Lastname, @Buildingname, @Roomnumber)";
 
 
                 connection.Execute(sql, new { newstudentDTO });
             }
 
         }
-        public StudentViewModel GetStudent(long StudentID)
+        public string GetStudent(long StudentID)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
-                string sql = @"SELECT student.Firstname AS Firstname, student.Lastname AS Lastname
-                               FROM student
-                               WHERE student.StudentID = StudentID;";
-
-                connection.Execute(sql, new { newstudentDTO });
-
+                return @"SELECT Firstname AS Firstname, Lastname AS Lastname
+                        FROM Student
+                        WHERE StudentID = StudentID;";
              
             }
 

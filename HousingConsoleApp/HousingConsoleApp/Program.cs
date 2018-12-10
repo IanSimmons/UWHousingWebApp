@@ -40,8 +40,7 @@ namespace HousingConsoleApp
             Console.WriteLine("MAIN MENU:");
             Console.WriteLine();
             Console.WriteLine("1. Create Student");
-            Console.WriteLine("2. Create Payment");
-            Console.WriteLine("3. Payment Summary");
+            Console.WriteLine("2. Payment History");
             Console.WriteLine("");
             Console.WriteLine("9. Exit");
 
@@ -53,10 +52,6 @@ namespace HousingConsoleApp
                 CreateStudent();
             }
             else if (selection == "2")
-            {
-
-            }
-            else if (selection == "3")
             {
                 string menu_return;
                 do
@@ -108,14 +103,14 @@ namespace HousingConsoleApp
                 return;
             }
 
-            //TODO check if student id is already in use
-            students = _studentViewer.GetStudent(student_id);
-            if(students != null)
-            {
-                Console.WriteLine("Student ID already exists.Press any key...");
-                Console.ReadKey();
-                return;
-            }
+            ////TODO check if student id is already in use
+            //students = _studentViewer.GetStudent(student_id);
+            //if(students != null)
+            //{
+            //    Console.WriteLine("Student ID already exists.Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
 
             //input first and last name
             Console.WriteLine("Enter student first name: ");
@@ -123,15 +118,15 @@ namespace HousingConsoleApp
             Console.WriteLine("Enter student last name: ");
             last_name = Console.ReadLine();
 
-            //write building names on screen
-            for (var i = 0; i < building.Count; i++)
-            {
-                Console.WriteLine("{0}. {1} {2}", building[i]);
-            }
+            ////write building names on screen
+            //for (var i = 0; i < building.Count; i++)
+            //{
+            //    Console.WriteLine("{0}. {1} {2}", building[i]);
+            //}
             CommandPrompt("Type building name: ");
             building_name = Console.ReadLine();
 
-            //TODO validate building name
+            ////TODO validate building name
             //if (!building.Contains(building_name)) //TODO
             //{
             //    Console.WriteLine("Invalid building entry.  Press any key...");
@@ -174,15 +169,16 @@ namespace HousingConsoleApp
             CommandPrompt("Is this correct? (Y/N)");
             string str_response = Console.ReadLine();
 
+           
             //pass to DTO
             if (str_response.ToLower() == "y")
             {
                 NewStudentDTO newStudent = new NewStudentDTO()
                 {
-                    first_name = first_name,
-                    last_name = last_name,
-                    building_name = building_name,
-                    room_number = room_number
+                    Firstname = first_name,
+                    Lastname = last_name,
+                    Buildingname = building_name,
+                    Roomnumber = room_number
                     //TODO meal_plan = meal_plan
                 };
                 Console.WriteLine("Student created successfully.");
@@ -200,9 +196,9 @@ namespace HousingConsoleApp
         public static string PaymentHistoryMenu()
         {
             WriteHeader();
-            Console.WriteLine("ORDER SUMMARY:");
+            Console.WriteLine("PAYMENT HISTORY:");
             Console.WriteLine();
-            Console.WriteLine("1. Run Order Summary");
+            Console.WriteLine("1. Run Payment History");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("9. Return to the Main Menu");
@@ -228,8 +224,8 @@ namespace HousingConsoleApp
         {
             long student_id;
 
-            if (_studentViewer == null)
-                _studentViewer = new StudentViewer();
+            //if (_studentViewer == null)
+            //    _studentViewer = new StudentViewer();
             if (_paymentHistoryViewer == null)
                 _paymentHistoryViewer = new PaymentHistoryViewer();
 
@@ -241,18 +237,21 @@ namespace HousingConsoleApp
             Console.WriteLine("Enter student ID: ");
             string str_student_id = (Console.ReadLine());
 
-            //validate student ID
-            if (!Int64.TryParse(str_student_id, out student_id) || !student.Contains(student_id))
-            { 
-                Console.WriteLine("Invalid student ID.  Press any key...");
-                Console.ReadKey();
-                return;
-            }
-            else
-            {    
+            student_id = Convert.ToInt64(str_student_id);
+
+            ////validate student ID
+            //if (!Int64.TryParse(str_student_id, out student_id) || !student.Contains(student_id))
+            //{ 
+            //    Console.WriteLine("Invalid student ID.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
+            //else
+            //{    
                 //display student name and ask for confirmation
-                student = _studentViewer.GetStudent(student_id);
-                Console.WriteLine("Student name: {0}" , student);
+
+                string student_name = _studentViewer.GetStudent(student_id);
+                Console.WriteLine("Student name: {0}" , student_name);
 
                 CommandPrompt("Is this correct? (Y/N)");
                 string str_response = Console.ReadLine();
@@ -265,7 +264,7 @@ namespace HousingConsoleApp
                     //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     Console.Clear();
-                    Console.WriteLine("Payment History for " + student.first_name + student.last_name);
+                    Console.WriteLine("Payment History for " + student_name);
                     Console.WriteLine("###############################################################################################");
                     Console.WriteLine();
                     Console.WriteLine();
@@ -279,7 +278,7 @@ namespace HousingConsoleApp
                         PrintOutSummaryLine(history);
                     }
                 }
-            }
+            //}
         }
 
         /// <param name="history"></param>

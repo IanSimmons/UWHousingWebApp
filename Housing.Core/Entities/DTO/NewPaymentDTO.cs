@@ -9,7 +9,7 @@ namespace UWHousing.Entities.DTO
     /// </summary>
     public class NewStudentPaymentDTO
     {
-        public int StudentID { get; set; }
+        public long StudentID { get; set; }
         public int Paymentamount { get; set; }
         public DateTime Paymentdate { get; set; } //could generate in business layer
     }

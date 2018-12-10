@@ -13,7 +13,8 @@ namespace UWHousing.BLL
     /// </summary>
     public class RoomViewer
     {
-        private readonly RoomDAO _roomDAO;
+        private readonly RoomDAO _room;
+        
 
         public RoomViewer()
         {
@@ -25,7 +26,7 @@ namespace UWHousing.BLL
         /// </summary>
         public IList<RoomViewModel> GetOpenRoomsByBuilding(string Buildingname)
         {
-            return _room.GetOpenRooms(Buildingname);
+            return _room.GetAllOpenRoomsByBuilding(Buildingname);
         }
 
 

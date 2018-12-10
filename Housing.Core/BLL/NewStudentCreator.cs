@@ -15,7 +15,6 @@ namespace UWHousing.BLL
     {
         private readonly StudentDAO _studentDAO;
 
-        public event EventHandler<StudentCreatedEventArgs> StudentCreated; //event delegate for when student is created
 
         public NewStudentCreator()
         {
@@ -26,26 +25,18 @@ namespace UWHousing.BLL
         /// <summary>
         /// Creates a new student
         /// </summary>
-        public void CreateStudent(NewStudentDTO newstudentDTO)
+        public void CreateStudent(NewStudentDTO newStudentDTO)
         {
             // create the studentDTO for persistence and populate its properties
             StudentDTO studentDTO = new StudentDTO()
             {
-                StudentID = newStudentDTO.student_id,
-                FirstName = newStudentDTO.first_name,
-                Lastname = newStudentDTO.last_name,
-                Buildingname = newStudentDTO.building_name,
-                Roomnumber = newStudentDTO.room_number,
+                StudentID = newStudentDTO.StudentID,
+                Firstname = newStudentDTO.Firstname,
+                Lastname = newStudentDTO.Lastname,
+                Buildingname = newStudentDTO.Buildingname,
+                Roomnumber = newStudentDTO.Roomnumber,
             };
-            //formatting/syntax might be off here
-        /// <summary>
-        /// Trigger method called to raise the <see cref="NewStudentCreated"/> event
-        /// </summary>
-        protected virtual void OnStudentCreated(StudentDTO studentDTO)
-        {
-            //null test, without making a copy while keeping thread-safety
-            StudentCreatedEventArgs args = new StudentCreatedEventArgs() { Student = studentDTO };
-            StudentCreated?.Invoke(this, args);
+           
         }
     }
 }

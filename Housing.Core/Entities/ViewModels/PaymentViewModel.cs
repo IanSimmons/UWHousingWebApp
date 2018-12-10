@@ -11,17 +11,17 @@ namespace UWHousing.Entities.ViewModels
     /// </summary>
     public class PaymentViewModel
     {
-        public int StudentID { get; set; } //probably dont need this
+        public long StudentID { get; set; } //probably dont need this
         public int PaymentAmount { get; set; }
         public DateTime PaymentDate { get; set; }
 
-        public override string ToString()
-        {
-            if (StudentID == string.Empty)
-                return base.ToString();
-            else
-                return Name;
+        //public override string ToString()
+        //{
+        //    if (StudentID == 0 )
+        //        return base.ToString();
+        //    else
+        //        return StudentID;
 
-        }
+        //}
     }
 }

@@ -16,18 +16,18 @@ namespace UWHousing.BLL
     public class PaymentHistoryViewer
     {
 
-        private readonly PaymentHistoryDAO _paymenthistoryDAO;
+        private readonly PaymentDAO _paymentDAO;
 
-        public StudentPaymentViewer()
-        {
-            _paymenthistoryDAO = new PaymentHistoryDAO();
-        }
+        //public void StudentPaymentViewer()
+        //{
+        //    _paymentDAO = new PaymentDAO();
+        //}
 
         ///Retrieves payment summary for student
 
-        public IList<PaymentHistoryViewModel> GetPaymentHistory(StudentID) ///this seems pretty wrong
+        public IList<PaymentHistoryViewModel> GetPaymentHistory(long StudentID) ///this seems pretty wrong
         {
-            return _paymenthistoryDAO.GetPaymentHistory(StudentID);
+            return _paymentDAO.GetPaymentHistory(StudentID);
         }
     }
 }

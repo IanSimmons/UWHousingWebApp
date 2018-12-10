@@ -15,17 +15,21 @@ namespace UWHousing.Data
     /// </summary>
     public class BuildingDAO
     {
+        IList<BuildingViewModel> buildings;
 
         /// <summary>
         /// Returns list of buildings
         /// </summary>
-        public string GetBuildingname()
+        public IList<BuildingViewModel> GetBuildingname()
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString))
             {
                 connection.Open();
-                return @"SELECT Buildingname
-                         FROM Building";
+                string sql = @"SELECT Buildingname
+                         from Building";
+
+                buildings = connection.Query<BuildingViewModel>(sql).AsList();
+                return buildings;
             }
 
         }

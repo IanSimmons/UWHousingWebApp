@@ -52,7 +52,7 @@
     <Compile Include="BLL\StudentViewer.cs" />
     <Compile Include="Data\BuildingDAO.cs" />
     <Compile Include="Data\StudentDAO.cs" />
-    <Compile Include="Data\PaymentHistoryDAO.cs" />
+    <Compile Include="Data\PaymentDAO.cs" />
     <Compile Include="Data\RoomDAO.cs" />
     <Compile Include="Entities\DTO\NewPaymentDTO.cs" />
     <Compile Include="Entities\DTO\NewStudentDTO.cs" />

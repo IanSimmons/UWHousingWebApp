@@ -17,19 +17,19 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// Student ID
         /// </summary>
-        public int student_id { get; set; }
+        public int StudentID{ get; set; }
 
         /// <summary>
         /// Student Name
         /// </summary>
-        public string first_name { get; set; }
-        public string last_name { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
 
         /// <summary>
         /// Building/room
         /// </summary>
-        public string building_name { get; set; }
-        public int room_number { get; set; }
+        public string Buildingname { get; set; }
+        public int Roomnumber { get; set; }
 
         /// <summary>
         /// Meal plan info
