@@ -58,6 +58,8 @@
     <Compile Include="Entities\DTO\NewStudentDTO.cs" />
     <Compile Include="Entities\Persistence\StudentDTO.cs" />
     <Compile Include="Entities\ViewModels\BuildingViewModel.cs" />
+    <Compile Include="Entities\ViewModels\EquipmentViewModel.cs" />
+    <Compile Include="Entities\ViewModels\PackagesViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentHistoryViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentViewModel.cs" />
     <Compile Include="Entities\ViewModels\RoomViewModel.cs" />

@@ -32,9 +32,14 @@ namespace Housing.Entities.DTO
         public int Roomnumber { get; set; }
 
         /// <summary>
+        /// Permenant Address
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
         /// Meal plan info
         /// </summary>
-       
+
         public string Mealplan { get; set; } //will get axed
 
     }

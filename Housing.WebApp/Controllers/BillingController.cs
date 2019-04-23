@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Housing.WebApp.Controllers
 {
-    public class ValuesController1 : Controller
+    public class BillingController : Controller
     {
         // GET api/<controller>
         public IEnumerable<string> Get()

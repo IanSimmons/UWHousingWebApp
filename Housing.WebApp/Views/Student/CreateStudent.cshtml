@@ -1,4 +1,4 @@
-﻿@model Housing.Entities.ViewModels.StudentViewModel
+﻿@model Housing.WebApp.Models.CreateStudentModel
 @{
     ViewBag.Title = "Create Student";
 }
@@ -43,11 +43,11 @@
     <!--END of Address form field -->
     <!--START of Building form field rank??-->
     <div class="form-group">
-        <label for="ddAssociate" class="col-sm-2 control-label">Building:</label>
+        <label for="ddBuilding" class="col-sm-2 control-label">Building:</label>
         <div class="col-sm-10">
-            <select id="ddAssociate" class="form-control" name="SalesAssociate">
+            <select id="ddBuilding" class="form-control" name="Building">
                 <option value="">~ Select building ~</option>
-                @foreach (var assoc in Model.Building)
+                @foreach (var building in Model.Building.Buildingname)
                 {
                     <option value="@building.Name">@building.Name </option>
                 }
