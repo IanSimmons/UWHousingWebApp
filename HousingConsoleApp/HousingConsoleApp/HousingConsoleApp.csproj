@@ -50,13 +50,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Housing.Core\HousingCore.csproj">
+    <ProjectReference Include="..\..\Housing.Core\Housing.Core.csproj">
       <Project>{A58160EB-17EC-4F0A-86FC-A689787AAF8C}</Project>
-      <Name>HousingCore</Name>
+      <Name>Housing.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

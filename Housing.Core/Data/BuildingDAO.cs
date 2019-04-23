@@ -1,14 +1,14 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWHousing.Entities.Persistence;
+using Housing.Entities.Persistence;
 using Dapper;
-using UWHousing.Entities.DTO;
-using UWHousing.Entities.ViewModels;
+using Housing.Entities.DTO;
+using Housing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace UWHousing.Data
+namespace Housing.Data
 {
     /// <summary>
     /// Data access object for housing
@@ -22,7 +22,7 @@ namespace UWHousing.Data
         /// </summary>
         public IList<BuildingViewModel> GetBuildingname()
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"SELECT Buildingname

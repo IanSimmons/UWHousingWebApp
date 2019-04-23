@@ -1,14 +1,14 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWHousing.Entities.Persistence;
+using Housing.Entities.Persistence;
 using Dapper;
-using UWHousing.Entities.DTO;
-using UWHousing.Entities.ViewModels;
+using Housing.Entities.DTO;
+using Housing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace UWHousing.Data
+namespace Housing.Data
 {
     /// <summary>
     /// Data access object for payment history 
@@ -23,7 +23,7 @@ namespace UWHousing.Data
         /// </summary>
         public IList<PaymentViewModel> GetPaymentHistory(long StudentID)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString)) //I don't think this is right but we need to connect somewhere
             {
                 connection.Open();
                 string sql = "SELECT Firstname, Lastname, Paymentenclosed As PaymentAmount, Paymentdate FROM student AS A INNER JOIN payment AS B On A.StudentID = B.StudentID " +

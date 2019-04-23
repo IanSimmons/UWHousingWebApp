@@ -1,0 +1,40 @@
+﻿@model Housing.Entities.ViewModels.BillingViewModel
+@{
+    ViewBag.Title = "View Bills";
+}
+
+<<!--CHANGE BILLING TO PAYMENT OR VICE VERSA-->
+
+<h2>Viewing Bills for @Model.FirstName @Model.LastName </h2>
+
+@using (Html.BeginForm("ViewBills", "Billing", FormMethod.Post))
+{
+    <table class="table-responsive table-striped table"
+       <tr>
+           <th>Charged Date</th>
+			<th>Description</th>
+           <th>Amount</th>
+			<th>Due Date</th>
+			<th>Status</th>
+       </tr>
+        @foreach(var charge in Model.Charges)
+        {
+            <tr>
+                <td>@charge.ChargeDate.ToString("M/d/yy")</td>
+                <td>@charge.DueDate.ToString("M/d/yy")</td>
+                <td>@charge.Amount</td>
+                <td>@charge.DueDate.ToString("M/d/yy") </td>
+                <td>@charge.Status.ToString()</td>
+            </tr>
+        }
+</table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2 col-lg-1">
+            <button type="submit" class="btn btn-primary">Create Order</button>
+        </div>
+        <div class="col-md-offset-1 col-md-2 col-lg-1">
+            <button type="submit" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+}

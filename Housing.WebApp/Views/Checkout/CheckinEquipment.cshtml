@@ -1,0 +1,11 @@
+﻿@model Housing.Entities.ViewModels.CheckoutViewModel
+@{
+    ViewBag.Title = "Check Out Equipment";
+}
+
+<h2>Viewing Bills for @Model.FirstName @Model.LastName </h2>
+
+@using (Html.BeginForm("CheckInEquipment", "Checkout", FormMethod.Post))
+{
+
+}

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UWHousing.Entities.ViewModels;
+using Housing.Entities.ViewModels;
 using Dapper;
 using System.Configuration;
 using System.Data.SqlClient;
-namespace UWHousing.Data
+namespace Housing.Data
 {
     /// <summary>
     /// Data access object for rooms
@@ -22,7 +22,7 @@ namespace UWHousing.Data
         {
             IList<RoomViewModel> room;
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
             {
                 connection.Open();
 

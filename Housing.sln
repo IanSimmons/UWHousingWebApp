@@ -5,7 +5,12 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingConsoleApp", "HousingConsoleApp\HousingConsoleApp\HousingConsoleApp.csproj", "{C850A056-D57A-422A-BB33-402CEAD857FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingCore", "Housing.Core\HousingCore.csproj", "{A58160EB-17EC-4F0A-86FC-A689787AAF8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housing.Core", "Housing.Core\Housing.Core.csproj", "{A58160EB-17EC-4F0A-86FC-A689787AAF8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housing.WebApp", "Housing.WebApp\Housing.WebApp.csproj", "{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A58160EB-17EC-4F0A-86FC-A689787AAF8C} = {A58160EB-17EC-4F0A-86FC-A689787AAF8C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

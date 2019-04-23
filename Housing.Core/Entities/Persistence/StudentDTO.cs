@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UWHousing.Entities.Persistence
+namespace Housing.Entities.Persistence
 {
     /// <summary>
     /// DTO used for studenrts being persisted

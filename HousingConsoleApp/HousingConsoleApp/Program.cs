@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UWHousing.BLL;
-using UWHousing.Entities.DTO;
-using UWHousing.Entities.ViewModels;
-using UWHousing.Entities.Persistence;
+using Housing.BLL;
+using Housing.Entities.DTO;
+using Housing.Entities.ViewModels;
+using Housing.Entities.Persistence;
 using System.Data.SqlClient;
 
 namespace HousingConsoleApp

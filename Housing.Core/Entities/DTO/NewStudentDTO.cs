@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UWHousing.Entities.DTO
+namespace Housing.Entities.DTO
 {
     /// <summary>
     /// DTO for transferring new student info from presentation layer

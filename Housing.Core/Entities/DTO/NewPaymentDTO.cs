@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UWHousing.Entities.DTO
+namespace Housing.Entities.DTO
 {
     /// <summary>
     /// DTO for transfering new payment information from the presentation layer

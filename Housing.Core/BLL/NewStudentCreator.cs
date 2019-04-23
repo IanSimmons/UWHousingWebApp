@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UWHousing.Data;
-using UWHousing.Entities.DTO;
-using UWHousing.Entities.Persistence;
-namespace UWHousing.BLL
+using Housing.Data;
+using Housing.Entities.DTO;
+using Housing.Entities.Persistence;
+namespace Housing.BLL
 {
     /// <summary>
     /// Business object responsible for creating new students in the system

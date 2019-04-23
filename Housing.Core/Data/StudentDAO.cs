@@ -1,14 +1,14 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using UWHousing.Entities.Persistence;
+using Housing.Entities.Persistence;
 using Dapper;
-using UWHousing.Entities.DTO;
-using UWHousing.Entities.ViewModels;
+using Housing.Entities.DTO;
+using Housing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace UWHousing.Data
+namespace Housing.Data
 {
     /// <summary>
     /// Data access object for students 
@@ -21,7 +21,7 @@ namespace UWHousing.Data
         /// </summary>
         public void CreateStudent(StudentDTO newstudentDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString)) //placeholder
             {
                 connection.Open();
                 string sql = @"Insert INTO Student (StudentID, 
@@ -39,7 +39,7 @@ namespace UWHousing.Data
         }
         public string GetStudent(long StudentID)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UWHousing"].ConnectionString)) //placeholder
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString)) //placeholder
             {
                 connection.Open();
                 string sql = @"SELECT Firstname + ' ' + Lastname

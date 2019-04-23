@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UWHousing.Data;
-using UWHousing.Entities.ViewModels;
+using Housing.Data;
+using Housing.Entities.ViewModels;
 
-namespace UWHousing.BLL
+namespace Housing.BLL
 {
     /// <summary>
     /// Business class responsible viewing student view models
