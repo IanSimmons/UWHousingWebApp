@@ -8,5 +8,9 @@ namespace Housing.WebApp.Models
 {
     public class LogPackageModel
     {
+        public long TrackingNumber { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
     }
 }

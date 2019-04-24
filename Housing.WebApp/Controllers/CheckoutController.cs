@@ -1,40 +1,43 @@
-﻿using System;
+﻿using Housing.WebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
 using System.Web.Mvc;
+using UWHousing.Entities.DTO;
 
 namespace Housing.WebApp.Controllers
 {
     public class CheckoutController : Controller
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public ActionResult Index()
         {
-            return new string[] { "value1", "value2" };
+            return View();
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [HttpPost]
+        public ActionResult CheckOutEquipment(CheckOutEquipmentModel formdata)
         {
-            return "value";
+            NewCheckoutDTO dto = new NewCheckoutDTO();
+
+            dto.StudentID = formdata.StudentID;
+            //TODO set status to checked out
+
+            NewPackageCreator package_Creator = new NewCheckoutCreator();
+            package_Creator.CreatePackage(dto);
+
+            return RedirectToAction("AfterPackageLog", "Package");
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public ActionResult ReleasePackage(ReleasePackageModel formdata)
         {
+
+            //TODO
+
+            return RedirectToAction("AfterPackageRelease", "Package");
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }

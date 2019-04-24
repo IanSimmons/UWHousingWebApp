@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BuildingViewer.cs" />
+    <Compile Include="BLL\NewPackageCreator.cs" />
     <Compile Include="BLL\NewStudentCreator.cs" />
     <Compile Include="BLL\PaymentHistoryViewer.cs" />
     <Compile Include="BLL\RoomViewer.cs" />
@@ -54,8 +55,12 @@
     <Compile Include="Data\StudentDAO.cs" />
     <Compile Include="Data\PaymentDAO.cs" />
     <Compile Include="Data\RoomDAO.cs" />
+    <Compile Include="Entities\DTO\NewCheckoutDTO.cs" />
+    <Compile Include="Entities\DTO\NewPackageDTO.cs" />
     <Compile Include="Entities\DTO\NewPaymentDTO.cs" />
     <Compile Include="Entities\DTO\NewStudentDTO.cs" />
+    <Compile Include="Entities\DTO\PackageDTO.cs" />
+    <Compile Include="Entities\DTO\UpdateStudentDTO.cs" />
     <Compile Include="Entities\Persistence\StudentDTO.cs" />
     <Compile Include="Entities\ViewModels\BuildingViewModel.cs" />
     <Compile Include="Entities\ViewModels\EquipmentViewModel.cs" />

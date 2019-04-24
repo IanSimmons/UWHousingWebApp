@@ -17,21 +17,6 @@ namespace Housing.WebApp.Controllers
             return View();
         }
 
-        //View for creating new orders
-        public ActionResult NewStudent()
-        {
-            BuildingViewer buildingViewer = new BuildingViewer();
-
-
-            CreateStudentModel model = new CreateStudentModel()
-            {
-
-            };
-                   
-
-            return View(model);
-        }
-
         [HttpPost]
         public ActionResult CreateStudent(CreateStudentModel formdata)
         {

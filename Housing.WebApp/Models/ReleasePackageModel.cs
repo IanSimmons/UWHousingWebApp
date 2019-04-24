@@ -8,5 +8,7 @@ namespace Housing.WebApp.Models
 {
     public class ReleasePackageModel
     {
+        public IList<PackageViewModel> Package { get; set; }
+
     }
 }
