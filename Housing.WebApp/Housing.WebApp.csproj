@@ -193,11 +193,11 @@
     <Content Include="Views\Student\UpdateStudent.cshtml" />
     <Content Include="Views\Billing\Bills.cshtml" />
     <Content Include="Views\Billing\OverdueAccounts.cshtml" />
-    <Content Include="Views\Checkout\CheckOutEquipment.cshtml" />
+    <Content Include="Views\CheckOut\CheckOutEquipment.cshtml" />
     <Content Include="Views\Packages\LogPackage.cshtml" />
     <Content Include="Views\Packages\ReleasePackage.cshtml" />
     <Content Include="Views\Packages\PackagesByBuilding.cshtml" />
-    <Content Include="Views\Checkout\CheckInEquipment.cshtml" />
+    <Content Include="Views\CheckOut\CheckInEquipment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

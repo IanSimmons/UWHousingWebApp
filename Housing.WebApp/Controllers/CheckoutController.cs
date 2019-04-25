@@ -19,24 +19,46 @@ namespace Housing.WebApp.Controllers
         [HttpPost]
         public ActionResult CheckOutEquipment(CheckOutEquipmentModel formdata)
         {
+            
+
+            long studentid = formdata.StudentID;
+            string building = formdata.Building;
+
+            EquipmentViewer = equipment_viewer = new EquipmentViewer();
+            IList<EquipmentViewModel> equipment = equipment_viewer.getEquipment(building);
+
             NewCheckoutDTO dto = new NewCheckoutDTO();
-
-            dto.StudentID = formdata.StudentID;
-            //TODO set status to checked out
-
-            NewPackageCreator package_Creator = new NewCheckoutCreator();
+            dto.EquipmentID = formdata.Equipment;
+            dto.Status = "Checked Out";
+            dto.StudentID = studentid;
+            
+            NewCheckoutCreator package_Creator = new NewCheckoutCreator();
             package_Creator.CreatePackage(dto);
 
-            return RedirectToAction("AfterPackageLog", "Package");
+            return RedirectToAction("AfterCheckOut", "CheckOut");
         }
 
         [HttpPost]
-        public ActionResult ReleasePackage(ReleasePackageModel formdata)
+        public ActionResult CheckInEquipment(CheckInEquipmentModel formdata)
         {
+            //?? display buildings
 
-            //TODO
+            long studentid = formdata.StudentID;
+            string building = formdata.Building;
 
-            return RedirectToAction("AfterPackageRelease", "Package");
+            EquipmentViewer = equipment_viewer = new EquipmentViewer();
+            IList<EquipmentViewModel> equipment = equipment_viewer.getEquipment(building, studentid);
+
+            var model = new CheckInEquipmentModel();
+            model.StudentID = studentid;
+            model.Equipment = equipment;
+
+            NewCheckoutDTO dto = new NewCheckoutDTO();
+            dto.EquipmentID = formdata.Equipment;
+            dto.Status = "Checked In";
+            dto.StudentID = 0;
+            //?? return View(model);
+            return RedirectToAction("AfterCheckIn", "CheckOut");
         }
 
     }

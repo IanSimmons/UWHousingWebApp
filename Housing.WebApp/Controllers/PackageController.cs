@@ -35,10 +35,20 @@ namespace Housing.WebApp.Controllers
         [HttpPost]
         public ActionResult ReleasePackage(ReleasePackageModel formdata)
         {
+            string firstname = formdata.FirstName;
+            string lastname = formdata.LastName;
+            
+            PackageViewer = package_viewer = new PackageViewer();
+            IList<PackageViewModel> packages = package_viewer.GetPackages(firstname, lastname);
 
-            //TODO - set release time
+            var model = new ReleasePackageModel();
+            model.Packages = packages;
+            model.FirstName = firstname;
+            model.LastName = lastname;
 
-
+            NewPackageDTO dto = new NewPackageDTO();
+            dto.Releasetime = DateTime.Now;
+            //?? return View(model);
             return RedirectToAction("AfterPackageRelease", "Package");
         }
 
