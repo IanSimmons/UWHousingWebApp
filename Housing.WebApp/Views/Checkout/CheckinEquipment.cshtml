@@ -3,7 +3,7 @@
     ViewBag.Title = "Check In Equipment";
 }
 
-<h2>Viewing Bills for @Model.FirstName @Model.LastName </h2>
+<h2>Equipment Checked Out </h2>
 
 @using (Html.BeginForm("CheckInEquipment", "Checkout", FormMethod.Post))
 {
@@ -15,7 +15,7 @@
             <div class="col-sm-10">
                 <select id="ddBuilding" class="form-control" name="Building">
                     <option value="">~ Select building ~</option>
-                    @foreach (var building in Model.Building)
+                    @foreach (var building in Model.Buildingname)
                     {
                         <option value="@building.BuildingName">@building.BuildingName </option>
                     }

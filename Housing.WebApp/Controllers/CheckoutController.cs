@@ -1,4 +1,5 @@
-﻿using Housing.WebApp.Models;
+﻿using Housing.BLL;
+using Housing.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Housing.WebApp.Controllers
             long studentid = formdata.StudentID;
             string building = formdata.Building;
 
-            EquipmentViewer = equipment_viewer = new EquipmentViewer();
+            EquipmentViewer equipment_viewer = new EquipmentViewer();
             IList<EquipmentViewModel> equipment = equipment_viewer.getEquipment(building);
 
             NewCheckoutDTO dto = new NewCheckoutDTO();

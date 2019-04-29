@@ -7,9 +7,9 @@ namespace UWHousing.Entities.DTO
     /// <summary>
     /// DTO for transferring new package info from presentation layer
     /// </summary>
-    public class NewCheckoutDTO
+    public class NewPackageDTO
     {
-        public NewCheckoutDTO()
+        public NewPackageDTO()
         {
 
         }
@@ -17,7 +17,7 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// Tracking Number
         /// </summary>
-        public long Trackingnum { get; set; }
+        public int TrackingNum { get; set; }
 
         /// <summary>
         /// Student Name

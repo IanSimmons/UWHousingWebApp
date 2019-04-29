@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\PackageViewer.cs" />
+    <Compile Include="BLL\EquipmentViewer.cs" />
     <Compile Include="BLL\BuildingViewer.cs" />
     <Compile Include="BLL\NewPackageCreator.cs" />
     <Compile Include="BLL\NewStudentCreator.cs" />
@@ -64,7 +66,7 @@
     <Compile Include="Entities\Persistence\StudentDTO.cs" />
     <Compile Include="Entities\ViewModels\BuildingViewModel.cs" />
     <Compile Include="Entities\ViewModels\EquipmentViewModel.cs" />
-    <Compile Include="Entities\ViewModels\PackagesViewModel.cs" />
+    <Compile Include="Entities\ViewModels\PackageViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentHistoryViewModel.cs" />
     <Compile Include="Entities\ViewModels\PaymentViewModel.cs" />
     <Compile Include="Entities\ViewModels\RoomViewModel.cs" />

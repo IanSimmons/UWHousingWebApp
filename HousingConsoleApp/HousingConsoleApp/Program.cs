@@ -16,7 +16,7 @@ namespace HousingConsoleApp
         //TODO
         private static PaymentHistoryViewer _paymentHistoryViewer;
         private static StudentViewer _studentViewer;
-        private static BuildingViewer _buildingViewer;
+        private static EquipmentViewer _buildingViewer;
         private static RoomViewer _roomViewer;
 
         private static NewStudentCreator _newStudentCreator;
@@ -79,7 +79,7 @@ namespace HousingConsoleApp
             string first_name, last_name, building_name;
 
             if (_buildingViewer == null)
-                _buildingViewer = new BuildingViewer();
+                _buildingViewer = new EquipmentViewer();
             if (_roomViewer == null)
                 _roomViewer = new RoomViewer();
 

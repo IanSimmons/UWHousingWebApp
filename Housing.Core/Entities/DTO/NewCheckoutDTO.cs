@@ -28,8 +28,13 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// StudentID/Building
         /// </summary>
-        public long StudentID { get; set; }
+        public int StudentID { get; set; }
         public string Buildingname { get; set; }
+
+        /// <summary>
+        /// Status
+        /// </summary>
+        public string Status { get; set; }
 
     }
 }
