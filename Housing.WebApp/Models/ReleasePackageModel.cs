@@ -8,8 +8,9 @@ namespace Housing.WebApp.Models
 {
     public class ReleasePackageModel
     {
-        public IList<PackageViewModel> Packages { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int TrackingID { get; set; }
+        public IList<PackageViewModel> Packages { get; set; }
     }
 }

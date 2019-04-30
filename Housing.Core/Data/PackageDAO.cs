@@ -7,6 +7,7 @@ using Housing.Entities.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using UWHousing.Entities.DTO;
 
 namespace Housing.Data
 {
@@ -19,14 +20,14 @@ namespace Housing.Data
         /// <summary>
         /// Creates a new package
         /// </summary>
-        public void CreatePackage(PackageDTO newpackageDTO)
+        public void CreatePackage(NewPackageDTO newpackageDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
-                string sql = @"Insert INTO Package (TrackingID, Firstname, Lastname, Logtime)
+                string sql = @"Insert INTO Package (TrackingID, Firstname, Lastname, Logtime, Buildingname )
                                
-                               Values (@Trackingnum, @Firstname , @Lastname, @Logtime)";
+                               Values (@TrackingID, @Firstname , @Lastname, @Logtime, @Buildingname)";
 
 
                 connection.Execute(sql, newpackageDTO);
@@ -40,11 +41,11 @@ namespace Housing.Data
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
-                string sql = @"SELECT *
+                string sql = @"SELECT TrackingID as TrackingID
                         FROM Package
                         Where Firstname = @Firstname and Lastname = @Lastname";
-                package = connection.Query<PackageViewModel>(sql).AsList();
-                return package;
+                var param = new { Firstname, Lastname };
+                return connection.Query<PackageViewModel>(sql, new { Firstname, Lastname }).AsList();
             }
 
         }
@@ -65,17 +66,21 @@ namespace Housing.Data
 
         }
 
-        public void UpdatePackage(PackageDTO updatepackageDTO)
+        public void ReleasePackage(PackageDTO releasepackageDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString)) 
+            long TrackingID = releasepackageDTO.TrackingID;
+            DateTime Releasetime = releasepackageDTO.Releasetime;
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString)) 
             {
                 connection.Open();
                 string sql = @"UPDATE Package,
-                             SET Releasetime = Releasetime
-                             WHERE Firstname = @Firstname and Lastname = @Lastname and Releasetime is null";
+                             SET Releasetime = @Releasetime
+                             WHERE TrackingID = @TrackingID";
 
+                var param = new { Releasetime, TrackingID };
 
-                connection.Execute(sql, updatepackageDTO);
+                connection.Execute(sql, new { Releasetime, TrackingID });
             }
         }
 

@@ -22,7 +22,7 @@ namespace Housing.Data
         /// </summary>
         public IList<BuildingViewModel> GetBuildingname()
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"SELECT Buildingname

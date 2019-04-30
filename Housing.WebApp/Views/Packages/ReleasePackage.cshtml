@@ -1,43 +1,35 @@
-﻿@model Housing.Entities.ViewModels.PackageViewModel
+﻿@model Housing.WebApp.Models.ReleasePackageModel
 @{
     ViewBag.Title = "Log Package";
 }
 
 <h2>Release Package</h2>
 
-@using (Html.BeginForm("ReleasePackage", "Packages", FormMethod.Post))
+@using (Html.BeginForm("NewReleasePackage", "Packages", FormMethod.Post))
 {
-    <!-- TODO Change to FIRST NAME, LNAme START of StudentID form field -->
-    <div class="form-group">
-        <label for="txtStudentID" class="col-sm-2 control-label">Student ID:</label>
-        <div class="col-sm-10">
-            <input id="txtStudentID" name="StudentID" type="text" placeholder="9071111111" class="form-control" />
+    <div class="form-horizontal">
+        <!--START of Packages form field -->
+        <div class="form-group">
+            <label for="lstPackage" class="col-sm-2 control-label">Package:</label>
+            <div class="col-sm-10">
+                <select id="lstPackage" class="form-control" name="Package" size="7">
+                    @foreach (var package in Model.Packages)
+                    {
+                        <option value="@package.TrackingID">@package.TrackingID</option>
+                    }
+                </select>
+            </div>
         </div>
-    </div>
-    <!--END of StudentID form field -->
-
-    <!--START of Packages form field -->
-    <div class="form-group">
-        <label for="lstPackage" class="col-sm-2 control-label">Package:</label>
-        <div class="col-sm-10">
-            <select id="lstPackage" class="form-control" name="Package" size="7">
-                @foreach (var package in Model.Student)
-                {
-                    <option value="@package.TrackingNumber">@package.TrackingNumber</option>
-                }
-            </select>
+        <!--END of Packages form field -->
+        <!-- START Submit button-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2 col-lg-1">
+                <button type="submit" class="btn btn-primary">Release Package</button>
+            </div>
+            <div class="col-md-offset-1 col-md-2 col-lg-1">
+                <button type="submit" class="btn btn-default">Cancel</button>
+            </div>
         </div>
-    </div>
-    <!--END of Packages form field -->
-
-    <!-- START Submit button-->
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-2 col-lg-1">
-            <button type="submit" class="btn btn-primary">Release Package</button>
+        <!-- END Submit button-->
         </div>
-        <div class="col-md-offset-1 col-md-2 col-lg-1">
-            <button type="submit" class="btn btn-default">Cancel</button>
-        </div>
-    </div>
-    <!-- END Submit button-->
-}
+        }

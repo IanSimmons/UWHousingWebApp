@@ -22,7 +22,8 @@ namespace Housing.Entities.Persistence
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Buildingname { get; set; }
-        public int Roomnumber { get; set; }      
+        public int Roomnumber { get; set; }  
+        public string Address { get; set; }
 
 
         ////implementing a VERY rudimentary Equals method.  Only taking into account the student number

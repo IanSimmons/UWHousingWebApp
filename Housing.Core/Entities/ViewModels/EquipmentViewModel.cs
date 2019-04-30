@@ -14,6 +14,8 @@ namespace Housing.Entities.ViewModels
         public long StudentID { get; set; }
         public string BuildingName { get; set; }
         public string Status { get; set; }
+        public long EquipmentID { get; set; }
+        public string Equipment { get; set; }
 
         /// public override string ToString()
         /// {

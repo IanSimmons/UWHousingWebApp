@@ -8,10 +8,11 @@ namespace Housing.WebApp.Models
 {
     public class CheckOutEquipmentModel
     {
-        public BuildingViewModel Building { get; set; }
+        public IList<BuildingViewModel> Building { get; set; }
         public IList<EquipmentViewModel> Equipment { get; set; }
         public long StudentID { get; set; }
         public int EquipmentID { get; set; }
+        public string Buildingname { get; set; }
 
 
     }

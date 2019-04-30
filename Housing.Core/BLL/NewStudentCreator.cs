@@ -35,6 +35,7 @@ namespace Housing.BLL
                 Lastname = newStudentDTO.Lastname,
                 Buildingname = newStudentDTO.Buildingname,
                 Roomnumber = newStudentDTO.Roomnumber,
+                Address = newStudentDTO.Address
             };
 
             _studentDAO.CreateStudent(studentDTO);

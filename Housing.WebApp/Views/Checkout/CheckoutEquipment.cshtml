@@ -5,54 +5,40 @@
 
 <h2>Check Out Equipment</h2>
 
-@using (Html.BeginForm("CheckOutEquipment", "Checkout", FormMethod.Post))
+@using (Html.BeginForm("NewCheckOut", "Checkout", FormMethod.Post))
 {
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <!--START of Building form field rank??-->
-        <div class="form-group">
-            <label for="ddBuilding" class="col-sm-2 control-label">Building:</label>
-            <div class="col-sm-10">
-                <select id="ddBuilding" class="form-control" name="Building">
-                    <option value="">~ Select building ~</option>
-                    @foreach (var building in Model.Building)
-                    {
-                        <option value="@building.Buildingname">@building.Buildingname </option>
-                    }
-                </select>
-            </div>
+    <!--START of Equipment form field -->
+    <div class="form-group">
+        <label for="lstEquipment" class="col-sm-2 control-label">Available Equipment:</label>
+        <div class="col-sm-10">
+            <select id="lstEquipment" class="form-control" name="Equipment" size="7">
+                @foreach (var equipment in Model.Equipment)
+                {
+                    <option value="@equipment.EquipmentID">@equipment.Equipment</option>
+                }
+            </select>
         </div>
-        <!--END of Building form field -->
-        <!--START of Equipment form field -->
-        <div class="form-group">
-            <label for="lstEquipment" class="col-sm-2 control-label">Available Equipment:</label>
-            <div class="col-sm-10">
-                <select id="lstEquipment" class="form-control" name="Equipment" size="7">
-                    @foreach (var equipment in Model.Equipment)
-                    {
-                        <option value="@equipment.EquipmentID">@equipment.Name</option>
-                    }
-                </select>
-            </div>
+    </div>
+    <!--END of Equipment form field -->
+    <!--START of StudentID form field -->
+    <div class="form-group">
+        <label for="txtStudentID" class="col-sm-2 control-label">Student ID:</label>
+        <div class="col-sm-10">
+            <input id="txtStudentID" name="StudentID" type="text" placeholder="9071111111" class="form-control" />
         </div>
-        <!--END of Equipment form field -->
-        <!--START of StudentID form field -->
-        <div class="form-group">
-            <label for="txtStudentID" class="col-sm-2 control-label">Student ID:</label>
-            <div class="col-sm-10">
-                <input id="txtStudentID" name="StudentID" type="text" placeholder="9071111111" class="form-control" />
-            </div>
+    </div>
+    <!--END of StudentID form field -->
+    <!-- START Submit button-->
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2 col-lg-1">
+            <button type="submit" class="btn btn-primary">Check Out Equipment</button>
         </div>
-        <!--END of StudentID form field -->
-        <!-- START Submit button-->
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-2 col-lg-1">
-                <button type="submit" class="btn btn-primary">Check Out Equipment</button>
-            </div>
-            <div class="col-md-offset-1 col-md-2 col-lg-1">
-                <button type="submit" class="btn btn-default">Cancel</button>
-            </div>
+        <div class="col-md-offset-1 col-md-2 col-lg-1">
+            <button type="submit" class="btn btn-default">Cancel</button>
         </div>
-        <!-- END Submit button-->
-        </div>
+    </div>
+    <!-- END Submit button-->
+</div>
         }

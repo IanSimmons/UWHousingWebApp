@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\NewCheckoutCreator.cs" />
+    <Compile Include="BLL\PackageReleaser.cs" />
     <Compile Include="BLL\PackageViewer.cs" />
     <Compile Include="BLL\EquipmentViewer.cs" />
     <Compile Include="BLL\BuildingViewer.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Entities\DTO\NewStudentDTO.cs" />
     <Compile Include="Entities\DTO\PackageDTO.cs" />
     <Compile Include="Entities\DTO\UpdateStudentDTO.cs" />
+    <Compile Include="Entities\Persistence\CheckoutDTO.cs" />
     <Compile Include="Entities\Persistence\StudentDTO.cs" />
     <Compile Include="Entities\ViewModels\BuildingViewModel.cs" />
     <Compile Include="Entities\ViewModels\EquipmentViewModel.cs" />

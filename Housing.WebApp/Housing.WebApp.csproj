@@ -128,7 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,14 +186,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Student\CreateStudent.cshtml" />
     <Content Include="Views\Student\SelectStudent.cshtml" />
     <Content Include="Views\Student\UpdateStudent.cshtml" />
     <Content Include="Views\CheckOut\CheckOutEquipment.cshtml" />
-    <Content Include="Views\Packages\LogPackage.cshtml" />
     <Content Include="Views\Packages\ReleasePackage.cshtml" />
     <Content Include="Views\Packages\PackagesByBuilding.cshtml" />
     <Content Include="Views\CheckOut\CheckInEquipment.cshtml" />
+    <Content Include="Views\Packages\LogPackage.cshtml" />
+    <Content Include="Views\Student\NewStudent.cshtml" />
+    <Content Include="Views\Packages\ViewPackages.cshtml" />
+    <Content Include="Views\CheckOut\ViewEquipment.cshtml" />
+    <Content Include="Views\Student\AfterStudent.cshtml" />
+    <Content Include="Views\Packages\AfterPackageLog.cshtml" />
+    <Content Include="Views\CheckOut\AfterCheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

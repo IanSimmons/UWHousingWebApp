@@ -13,7 +13,7 @@ namespace Housing.Entities.ViewModels
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Trackingnum { get; set; }
+        public long TrackingID { get; set; }
 
         public override string ToString()
         {

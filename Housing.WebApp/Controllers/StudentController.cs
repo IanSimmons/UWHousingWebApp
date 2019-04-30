@@ -12,9 +12,12 @@ namespace Housing.WebApp.Controllers
 {
     public class StudentController : Controller
     { 
-        public ActionResult Index()
+        public ActionResult NewStudent()
         {
-            return View();
+            CreateStudentModel vm = new CreateStudentModel();
+            BuildingViewer viewer = new BuildingViewer();
+            vm.Building = viewer.GetAllBuildingname();
+            return View(vm);
         }
 
         [HttpPost]
@@ -26,13 +29,18 @@ namespace Housing.WebApp.Controllers
             dto.Firstname = formdata.FirstName;
             dto.Lastname = formdata.LastName;
             dto.Address = formdata.Address;
-            dto.Buildingname = formdata.Building.Buildingname;
+            dto.Buildingname = formdata.Buildingname;
 
             NewStudentCreator student_Creator = new NewStudentCreator();
             student_Creator.CreateStudent(dto);
     
             return RedirectToAction("AfterStudent", "Student");
 
+        }
+
+        public ActionResult AfterStudent()
+        {
+            return View();
         }
 
         public ActionResult ViewStudent(long studentid)

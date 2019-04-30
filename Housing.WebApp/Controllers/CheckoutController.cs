@@ -13,31 +13,43 @@ namespace Housing.WebApp.Controllers
 {
     public class CheckoutController : Controller
     {
-        public ActionResult Index()
+        public ActionResult ViewEquipment()
         {
-            return View();
+            CheckOutEquipmentModel vm = new CheckOutEquipmentModel();
+            BuildingViewer viewer = new BuildingViewer();
+            vm.Building = viewer.GetAllBuildingname();
+            return View(vm);
+        }
+
+        public ActionResult CheckOutEquipment(CheckOutEquipmentModel formdata)
+        {
+            CheckOutEquipmentModel vm = new CheckOutEquipmentModel();
+            EquipmentViewer viewer = new EquipmentViewer();
+            vm.Equipment = viewer.Getequipment(formdata.Buildingname);
+            return View(vm);
         }
 
         [HttpPost]
-        public ActionResult CheckOutEquipment(CheckOutEquipmentModel formdata)
-        {
-            
-
+        public ActionResult NewCheckout(CheckOutEquipmentModel formdata)
+        {          
             long studentid = formdata.StudentID;
-            string building = formdata.Building.Buildingname;
-
-            EquipmentViewer equipment_viewer = new EquipmentViewer();
-            IList<EquipmentViewModel> equipment = equipment_viewer.Getequipment(building);
+            string building = formdata.Buildingname;
+            int equipmentid = formdata.EquipmentID;
 
             NewCheckoutDTO dto = new NewCheckoutDTO();
-            dto.EquipmentID = formdata.EquipmentID;
+            dto.EquipmentID = equipmentid;
             dto.Status = "Out";
             dto.StudentID = studentid;
             
-            //NewCheckoutCreator package_Creator = new NewCheckoutCreator(); //??
-            //package_Creator.CreatePackage(dto);
+            NewCheckoutCreator checkout_Creator = new NewCheckoutCreator();
+            checkout_Creator.CheckOut(dto);
             
             return RedirectToAction("AfterCheckOut", "CheckOut");
+        }
+
+        public ActionResult AfterCheckOut()
+        {
+            return View();
         }
 
         [HttpPost]

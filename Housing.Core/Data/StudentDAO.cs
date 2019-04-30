@@ -21,7 +21,7 @@ namespace Housing.Data
         /// </summary>
         public void CreateStudent(StudentDTO newstudentDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"Insert INTO Student (StudentID, 
@@ -56,7 +56,7 @@ namespace Housing.Data
 
         public void UpdateStudent(StudentDTO updatestudentDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString)) 
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString)) 
             {
                 connection.Open();
                 string sql = @"SET Studentaddress = @Studentaddress,

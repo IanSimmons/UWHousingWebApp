@@ -17,7 +17,7 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// Tracking Number
         /// </summary>
-        public long Trackingnum { get; set; }
+        public long TrackingID { get; set; }
 
         /// <summary>
         /// Student Name
@@ -26,5 +26,8 @@ namespace UWHousing.Entities.DTO
         public string Lastname { get; set; }
 
         public DateTime Logtime { get; set; }
+        public DateTime Releasetime { get; set; }
+
+        public string Buildingname { get; set; }
     }
 }

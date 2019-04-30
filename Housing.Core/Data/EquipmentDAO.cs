@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UWHousing.Entities.DTO;
+using System.Data;
+using System.Collections;
 
 namespace Housing.Data
 {
@@ -26,8 +28,10 @@ namespace Housing.Data
                 string sql = @"SELECT *
                         FROM Checkout
                         Where Buildingname = @Buildingname and Status = 'In'";
-                equipment = connection.Query<EquipmentViewModel>(sql).AsList();
-                return equipment;
+
+                var param = new { Buildingname };
+
+                return connection.Query<EquipmentViewModel>(sql, new { Buildingname }).AsList();             
             }
 
         }
@@ -35,16 +39,16 @@ namespace Housing.Data
         /// <summary>
         /// Check Out Equipment
         /// </summary>
-        public void CheckOut(NewCheckoutDTO newcheckoutDTO)
+        public void CheckOut(CheckoutDTO checkoutDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"Set StudentID = @StudentID, Status = 'Out'
-                               Where LoanID = @LoanID";
+                               Where LoanID = @EquipmentID";
 
 
-                connection.Execute(sql, newcheckoutDTO);
+                connection.Execute(sql, checkoutDTO);
             }
 
         }
@@ -54,7 +58,7 @@ namespace Housing.Data
         /// </summary>
         public void CheckIn(NewCheckoutDTO newcheckoutDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"Set StudentID = 0, Status = 'In'

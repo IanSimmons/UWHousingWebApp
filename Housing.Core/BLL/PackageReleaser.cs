@@ -14,33 +14,30 @@ namespace Housing.BLL
     /// <summary>
     /// Business object responsible for creating new packages in the system
     /// </summary>
-    public class NewPackageCreator
+    public class PackageReleaser
     {
         private readonly PackageDAO _packageDAO;
 
 
-        public NewPackageCreator()
+        public PackageReleaser()
         {
             _packageDAO = new PackageDAO();
 
         }
 
         /// <summary>
-        /// Creates a new package
+        /// Releases a package
         /// </summary>
-        public void CreatePackage(NewPackageDTO newPackageDTO)
+        public void ReleasePackage(NewPackageDTO newPackageDTO)
         {
             // create the studentDTO for persistence and populate its properties
-            NewPackageDTO packageDTO = new NewPackageDTO()
+            PackageDTO packageDTO = new PackageDTO()
             {
                 TrackingID = newPackageDTO.TrackingID,
-                Firstname = newPackageDTO.Firstname,
-                Lastname = newPackageDTO.Lastname,
-                Logtime = newPackageDTO.Logtime,
-                Buildingname = newPackageDTO.Buildingname
+                Releasetime = newPackageDTO.Releasetime               
             };
 
-            _packageDAO.CreatePackage(packageDTO);
+            _packageDAO.ReleasePackage(packageDTO);
 
         }
     }

@@ -1,45 +1,60 @@
-﻿@model Housing.Entities.ViewModels.PackageViewModel
+﻿@model Housing.WebApp.Models.LogPackageModel
 @{
     ViewBag.Title = "Log Package";
 }
 
 <h2>Log Package</h2>
 
-@using (Html.BeginForm("LogPackage", "Packages", FormMethod.Post))
+@using (Html.BeginForm("CreatePackage", "Packages", FormMethod.Post))
 {
-    <!--START of Tracking Number form field -->
-    <div class="form-group">
-        <label for="txtTrackingNumber" class="col-sm-2 control-label">Tracking Number:</label>
-        <div class="col-sm-10">
-            <input id="txtFirstName" name="TrackingNumber" type="text" placeholder="Tracking #" class="form-control" />
+    <div class="form-horizontal">
+        <!--START of Building form field rank??-->
+        <div class="form-group">
+            <label for="ddBuilding" class="col-sm-2 control-label">Building:</label>
+            <div class="col-sm-10">
+                <select id="ddBuilding" class="form-control" name="BuildingName">
+                    <option value="">~ Select building ~</option>
+                    @foreach (var building in Model.Building)
+                    {
+                        <option value="@building.Buildingname">@building.Buildingname </option>
+                    }
+                </select>
+            </div>
         </div>
-    </div>
-    <!--END of Tracking Number form field -->
-    <!--START of First Name form field -->
-    <div class="form-group">
-        <label for="txtFirstName" class="col-sm-2 control-label">First Name:</label>
-        <div class="col-sm-10">
-            <input id="txtFirstName" name="FirstName" type="text" placeholder="Jane" class="form-control" />
+        <!--END of Building form field -->
+        <!--START of Tracking Number form field -->
+        <div class="form-group">
+            <label for="txtTrackingIDber" class="col-sm-2 control-label">Tracking Number:</label>
+            <div class="col-sm-10">
+                <input id="txtFirstName" name="TrackingIDber" type="text" placeholder="Tracking #" class="form-control" />
+            </div>
         </div>
-    </div>
-    <!--END of First Name form field -->
-    <!--START of Last Name form field -->
-    <div class="form-group">
-        <label for="txtLastName" class="col-sm-2 control-label">Last Name:</label>
-        <div class="col-sm-10">
-            <input id="txtLastName" name="LastName" type="text" placeholder="Doe" class="form-control" />
+        <!--END of Tracking Number form field -->
+        <!--START of First Name form field -->
+        <div class="form-group">
+            <label for="txtFirstName" class="col-sm-2 control-label">First Name:</label>
+            <div class="col-sm-10">
+                <input id="txtFirstName" name="FirstName" type="text" placeholder="Jane" class="form-control" />
+            </div>
         </div>
-    </div>
-    <!--END of Last Name form field -->
-    
-    <!-- START Submit button-->
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-2 col-lg-1">
-            <button type="submit" class="btn btn-primary">Log Package</button>
+        <!--END of First Name form field -->
+        <!--START of Last Name form field -->
+        <div class="form-group">
+            <label for="txtLastName" class="col-sm-2 control-label">Last Name:</label>
+            <div class="col-sm-10">
+                <input id="txtLastName" name="LastName" type="text" placeholder="Doe" class="form-control" />
+            </div>
         </div>
-        <div class="col-md-offset-1 col-md-2 col-lg-1">
-            <button type="submit" class="btn btn-default">Cancel</button>
+        <!--END of Last Name form field -->
+        <!-- START Submit button-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-2 col-lg-1">
+                <button type="submit" class="btn btn-primary">Log Package</button>
+            </div>
+            <div class="col-md-offset-1 col-md-2 col-lg-1">
+                <button type="submit" class="btn btn-default">Cancel</button>
+            </div>
         </div>
-    </div>
-    <!-- END Submit button-->
-}
+        <!-- END Submit button-->
+        </div>
+        }
