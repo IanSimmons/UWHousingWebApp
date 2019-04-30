@@ -26,7 +26,7 @@ namespace Housing.WebApp.Controllers
             dto.Firstname = formdata.FirstName;
             dto.Lastname = formdata.LastName;
             dto.Address = formdata.Address;
-            dto.Buildingname = formdata.Building;
+            dto.Buildingname = formdata.Building.Buildingname;
 
             NewStudentCreator student_Creator = new NewStudentCreator();
             student_Creator.CreateStudent(dto);

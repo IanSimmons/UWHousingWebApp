@@ -187,11 +187,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\CreateStudent.cshtml" />
-    <Content Include="Views\Billing\NewPayment.cshtml" />
     <Content Include="Views\Student\SelectStudent.cshtml" />
     <Content Include="Views\Student\UpdateStudent.cshtml" />
-    <Content Include="Views\Billing\Bills.cshtml" />
-    <Content Include="Views\Billing\OverdueAccounts.cshtml" />
     <Content Include="Views\CheckOut\CheckOutEquipment.cshtml" />
     <Content Include="Views\Packages\LogPackage.cshtml" />
     <Content Include="Views\Packages\ReleasePackage.cshtml" />

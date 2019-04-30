@@ -12,5 +12,6 @@ namespace Housing.WebApp.Models
         public IList<EquipmentViewModel> Equipment { get; set; }
         public long StudentID { get; set; }
         public string Condition { get; set; }
+        public int EquipmentID { get; set; }
     }
 }

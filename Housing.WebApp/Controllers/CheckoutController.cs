@@ -34,9 +34,9 @@ namespace Housing.WebApp.Controllers
             dto.Status = "Out";
             dto.StudentID = studentid;
             
-            NewCheckoutCreator package_Creator = new NewCheckoutCreator(); //??
-            package_Creator.CreatePackage(dto);
-
+            //NewCheckoutCreator package_Creator = new NewCheckoutCreator(); //??
+            //package_Creator.CreatePackage(dto);
+            
             return RedirectToAction("AfterCheckOut", "CheckOut");
         }
 
@@ -56,7 +56,7 @@ namespace Housing.WebApp.Controllers
             model.Equipment = equipment;
 
             NewCheckoutDTO dto = new NewCheckoutDTO();
-            dto.EquipmentID = formdata.Equipment;
+            dto.EquipmentID = formdata.EquipmentID;
             dto.Status = "In";
             dto.StudentID = 0;
             //?? return View(model);
