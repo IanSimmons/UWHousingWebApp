@@ -103,48 +103,61 @@ namespace HousingConsoleApp
                 return;
             }
 
+            ////TODO check if student id is already in use
+            //students = _studentViewer.GetStudent(student_id);
+            //if(students != null)
+            //{
+            //    Console.WriteLine("Student ID already exists.Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
+
             //input first and last name
             Console.WriteLine("Enter student first name: ");
             first_name = Console.ReadLine();
             Console.WriteLine("Enter student last name: ");
             last_name = Console.ReadLine();
 
-            //write building names on screen
-            for (var i = 0; i<building.Count; i++)
-            {
-                Console.WriteLine("{0}. {1}", i+1 , building[i].Buildingname);
-            }
-            //CommandPrompt("Type building name: ");
-            Console.WriteLine("Type building name: ");
+            ////write building names on screen
+            //for (var i = 0; i < building.Count; i++)
+            //{
+            //    Console.WriteLine("{0}. {1} {2}", building[i]);
+            //}
+            CommandPrompt("Type building name: ");
             building_name = Console.ReadLine();
 
-
-            //validate building name
-            if ((building.Where(dorms => dorms.Buildingname.Trim() == building_name).ToList().Count) == 0) //TODO
-            {
-                Console.WriteLine("Invalid building entry.  Press any key...");
-                Console.ReadKey();
-                return;
-            }
+            ////TODO validate building name
+            //if (!building.Contains(building_name)) //TODO
+            //{
+            //    Console.WriteLine("Invalid building entry.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
 
             //building is valid - grab open rooms
             rooms = _roomViewer.GetOpenRoomsByBuilding(building_name);
 
-            //room 
+            //TODO room 
             for (var i = 0; i < rooms.Count; i++)
             {
                 Console.WriteLine("Open rooms in " + building_name);
                 Console.WriteLine("{0}. {1} {2}", rooms[i]);
             }
-            //CommandPrompt("Select open room: ");
-            Console.WriteLine("Select open room: ");
+            CommandPrompt("Select open room: ");
             string str_room_number = Console.ReadLine();
 
+            //TODO validate room
+            //if (!Int32.TryParse(str_room_number, out room_number) || !rooms.Contains(room_number))
+            //{
+            //    Console.WriteLine("Invalid room number.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
 
-       
+            //TODO Will not need once validation works
             room_number = Convert.ToInt32(str_room_number);
 
-            //summary screen
+            //TODO summary screen
             WriteHeader();
             WriteCreateStudentHeader();
             Console.WriteLine("Student Details:");
@@ -183,7 +196,8 @@ namespace HousingConsoleApp
             }
         }
 
-
+        //create payment
+        //prompt for studid and payment
 
 
         //student payment history report
@@ -224,7 +238,7 @@ namespace HousingConsoleApp
                 _paymentHistoryViewer = new PaymentHistoryViewer();
 
             IList<StudentViewModel> student;
-            
+            //IList<PaymentHistoryViewModel> history;
 
             WriteHeader();
 
@@ -233,7 +247,15 @@ namespace HousingConsoleApp
 
             student_id = Convert.ToInt64(str_student_id);
 
-   
+            ////validate student ID
+            //if (!Int64.TryParse(str_student_id, out student_id) || !student.Contains(student_id))
+            //{ 
+            //    Console.WriteLine("Invalid student ID.  Press any key...");
+            //    Console.ReadKey();
+            //    return;
+            //}
+            //else
+            //{    
                 //display student name and ask for confirmation
 
                 string student_name = _studentViewer.GetStudent(student_id)[0].FirstName + " " + _studentViewer.GetStudent(student_id)[0].LastName;
@@ -247,7 +269,7 @@ namespace HousingConsoleApp
                     IList<PaymentViewModel> histories = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     //display payment history
-                    
+                    //history = _paymentHistoryViewer.GetPaymentHistory(student_id);
 
                     Console.Clear();
                     Console.WriteLine("Payment History for " + student_name);
@@ -258,14 +280,13 @@ namespace HousingConsoleApp
 
                     //get data
                     Console.WriteLine("{0,-30} {1,9}", "Payment Date", "Payment Amount");
+                    //TODO
                     foreach (PaymentViewModel history in histories)
                     {
                         PrintOutSummaryLine(history);
                         
                     }
-                    Console.WriteLine("Press any key...");
                     Console.ReadKey();
-                    return;
             }
             //}
         }
