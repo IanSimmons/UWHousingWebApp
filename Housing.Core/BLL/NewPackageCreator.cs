@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Housing.Data;
 using Housing.Entities.DTO;
 using Housing.Entities.Persistence;
+using UWHousing.Entities.DTO;
+
 namespace Housing.BLL
 {
     /// <summary>
@@ -19,7 +21,7 @@ namespace Housing.BLL
 
         public NewPackageCreator()
         {
-            _PackageDAO = new PackageDAO();
+            _packageDAO = new PackageDAO();
 
         }
 
@@ -29,9 +31,9 @@ namespace Housing.BLL
         public void CreatePackage(NewPackageDTO newPackageDTO)
         {
             // create the studentDTO for persistence and populate its properties
-            PackageDTO ptudentDTO = new PackageDTO()
+            PackageDTO packageDTO = new PackageDTO()
             {
-                TrackingNum = newPackageDTO.TrackingNum,
+                TrackingNum = newPackageDTO.Trackingnum,
                 Firstname = newPackageDTO.Firstname,
                 Lastname = newPackageDTO.Lastname,
             };

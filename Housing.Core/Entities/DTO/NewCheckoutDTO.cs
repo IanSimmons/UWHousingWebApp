@@ -7,7 +7,7 @@ namespace UWHousing.Entities.DTO
     /// <summary>
     /// DTO for transferring new checkout info from presentation layer
     /// </summary>
-    public class NewCheckout
+    public class NewCheckoutDTO
     {
         public NewCheckoutDTO()
         {
@@ -28,7 +28,7 @@ namespace UWHousing.Entities.DTO
         /// <summary>
         /// StudentID/Building
         /// </summary>
-        public int StudentID { get; set; }
+        public long StudentID { get; set; }
         public string Buildingname { get; set; }
 
         /// <summary>

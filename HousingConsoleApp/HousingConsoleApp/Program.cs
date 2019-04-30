@@ -236,7 +236,7 @@ namespace HousingConsoleApp
    
                 //display student name and ask for confirmation
 
-                string student_name = _studentViewer.GetStudent(student_id);
+                string student_name = _studentViewer.GetStudent(student_id)[0].FirstName + " " + _studentViewer.GetStudent(student_id)[0].LastName;
                 Console.WriteLine("Student name: {0}" , student_name);
 
                 CommandPrompt("Is this correct? (Y/N)");

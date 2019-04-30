@@ -1,4 +1,5 @@
 ﻿using Housing.BLL;
+using Housing.Entities.ViewModels;
 using Housing.WebApp.Models;
 using System;
 using System.Collections.Generic;
@@ -23,17 +24,17 @@ namespace Housing.WebApp.Controllers
             
 
             long studentid = formdata.StudentID;
-            string building = formdata.Building;
+            string building = formdata.Building.Buildingname;
 
             EquipmentViewer equipment_viewer = new EquipmentViewer();
-            IList<EquipmentViewModel> equipment = equipment_viewer.getEquipment(building);
+            IList<EquipmentViewModel> equipment = equipment_viewer.Getequipment(building);
 
             NewCheckoutDTO dto = new NewCheckoutDTO();
-            dto.EquipmentID = formdata.Equipment;
-            dto.Status = "Checked Out";
+            dto.EquipmentID = formdata.EquipmentID;
+            dto.Status = "Out";
             dto.StudentID = studentid;
             
-            NewCheckoutCreator package_Creator = new NewCheckoutCreator();
+            NewCheckoutCreator package_Creator = new NewCheckoutCreator(); //??
             package_Creator.CreatePackage(dto);
 
             return RedirectToAction("AfterCheckOut", "CheckOut");
@@ -45,10 +46,10 @@ namespace Housing.WebApp.Controllers
             //?? display buildings
 
             long studentid = formdata.StudentID;
-            string building = formdata.Building;
+            string building = formdata.Building.Buildingname;
 
-            EquipmentViewer = equipment_viewer = new EquipmentViewer();
-            IList<EquipmentViewModel> equipment = equipment_viewer.getEquipment(building, studentid);
+            EquipmentViewer equipment_viewer = new EquipmentViewer();
+            IList<EquipmentViewModel> equipment = equipment_viewer.GetequipmentByStudent(studentid);
 
             var model = new CheckInEquipmentModel();
             model.StudentID = studentid;
@@ -56,7 +57,7 @@ namespace Housing.WebApp.Controllers
 
             NewCheckoutDTO dto = new NewCheckoutDTO();
             dto.EquipmentID = formdata.Equipment;
-            dto.Status = "Checked In";
+            dto.Status = "In";
             dto.StudentID = 0;
             //?? return View(model);
             return RedirectToAction("AfterCheckIn", "CheckOut");

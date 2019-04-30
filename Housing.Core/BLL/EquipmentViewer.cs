@@ -17,17 +17,21 @@ namespace Housing.BLL
 
         public EquipmentViewer()
         {
-            _equipmentDAO = new equipmentDAO();
+            _equipmentDAO = new EquipmentDAO();
         }
 
         /// <summary>
         /// Returns view models of all equipment by building
         /// </summary>
-        public IList<EquipmentViewModel> GetAllequipmentname()
+        public IList<EquipmentViewModel> Getequipment(string Buildingname)
         {
-            return _equipmentDAO.Getequipmentname();
+            return _equipmentDAO.GetEquipment(Buildingname);
         }
 
+        public IList<EquipmentViewModel> GetequipmentByStudent(long StudentID)
+        {
+            return _equipmentDAO.GetEquipmentByStudent(StudentID);
+        }
 
     }
 }

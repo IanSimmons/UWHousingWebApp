@@ -12,7 +12,7 @@ namespace Housing.Entities.Persistence
         public long TrackingNum { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-
+        public DateTime Releasetime { get; set; }
 
     }
 }

@@ -23,7 +23,7 @@ namespace Housing.BLL
         /// <summary>
         /// Returns specified student?
         /// </summary>
-        public string GetStudent(long StudentID) //
+        public IList<StudentViewModel> GetStudent(long StudentID) //
         {
             return _studentDAO.GetStudent(StudentID);
         }

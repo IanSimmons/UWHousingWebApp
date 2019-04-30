@@ -21,35 +21,51 @@ namespace Housing.Data
         /// </summary>
         public void CreateStudent(StudentDTO newstudentDTO)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString)) //placeholder
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString))
             {
                 connection.Open();
                 string sql = @"Insert INTO Student (StudentID, 
                                Firstname,
                                Lastname, 
                                Buildingname,
-                               Roomnumber)
+                               Roomnumber,
+                               Studentaddress)
                                
-                               Values (@StudentID, @Firstname, @Lastname, @Buildingname, @Roomnumber)";
+                               Values (@StudentID, @Firstname, @Lastname, @Buildingname, @Roomnumber, @Address)";
 
 
                 connection.Execute(sql, newstudentDTO);
             }
 
         }
-        public string GetStudent(long StudentID)
+        public IList<StudentViewModel> GetStudent(long StudentID)
         {
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString)) //placeholder
+            IList<StudentViewModel> student;
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housing"].ConnectionString))
             {
                 connection.Open();
-                string sql = @"SELECT Firstname + ' ' + Lastname
+                string sql = @"SELECT Firstname, Lastname, Studentaddress, Buildingname
                         FROM Student
-                        WHERE StudentID = @StudentID;";
-                return (string)connection.ExecuteScalar(sql, new {StudentID});
-                
+                        WHERE StudentID = @StudentID";
+                student = connection.Query<StudentViewModel>(sql).AsList();
+                return student;
+             }
 
+        }
+
+        public void UpdateStudent(StudentDTO updatestudentDTO)
+        {
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Housingousing"].ConnectionString)) 
+            {
+                connection.Open();
+                string sql = @"SET Studentaddress = @Studentaddress,
+                             Buildingname= @Buildingname
+                             WHERE StudentID = @StudentID";
+
+
+                connection.Execute(sql, updatestudentDTO);
             }
-
         }
 
     }

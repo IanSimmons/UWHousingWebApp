@@ -17,15 +17,15 @@ namespace Housing.BLL
 
         public PackageViewer()
         {
-            _packageDAO = new packageDAO();
+            _packageDAO = new PackageDAO();
         }
 
         /// <summary>
         /// Returns view models of all package by building
         /// </summary>
-        public IList<PackageViewModel> GetAllpackagename()
+        public IList<PackageViewModel> GetPackage(string Firstname, string Lastname)
         {
-            return _packageDAO.Getpackage();
+            return _packageDAO.GetPackages(Firstname, Lastname);
         }
 
 

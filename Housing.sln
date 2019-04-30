@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HousingConsoleApp", "HousingConsoleApp\HousingConsoleApp\HousingConsoleApp.csproj", "{C850A056-D57A-422A-BB33-402CEAD857FC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housing.Core", "Housing.Core\Housing.Core.csproj", "{A58160EB-17EC-4F0A-86FC-A689787AAF8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Housing.WebApp", "Housing.WebApp\Housing.WebApp.csproj", "{CAB67FFF-6504-45AB-AB0E-016B3C0C3B90}"
@@ -18,10 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C850A056-D57A-422A-BB33-402CEAD857FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C850A056-D57A-422A-BB33-402CEAD857FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C850A056-D57A-422A-BB33-402CEAD857FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A58160EB-17EC-4F0A-86FC-A689787AAF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -54,6 +54,8 @@
     <Compile Include="BLL\RoomViewer.cs" />
     <Compile Include="BLL\StudentViewer.cs" />
     <Compile Include="Data\BuildingDAO.cs" />
+    <Compile Include="Data\EquipmentDAO.cs" />
+    <Compile Include="Data\PackageDAO.cs" />
     <Compile Include="Data\StudentDAO.cs" />
     <Compile Include="Data\PaymentDAO.cs" />
     <Compile Include="Data\RoomDAO.cs" />

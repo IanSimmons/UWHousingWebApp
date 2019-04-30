@@ -1,4 +1,7 @@
-﻿using Housing.WebApp.Models;
+﻿using Housing.BLL;
+using Housing.Entities.Persistence;
+using Housing.Entities.ViewModels;
+using Housing.WebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,7 @@ namespace Housing.WebApp.Controllers
         [HttpPost]
         public ActionResult LogPackage(LogPackageModel formdata)
         {
-            NewCheckoutDTO dto = new NewCheckoutDTO();
+            NewPackageDTO dto = new NewPackageDTO();
 
             dto.Trackingnum = formdata.TrackingNumber;
             dto.Firstname = formdata.FirstName;
@@ -38,15 +41,15 @@ namespace Housing.WebApp.Controllers
             string firstname = formdata.FirstName;
             string lastname = formdata.LastName;
             
-            PackageViewer = package_viewer = new PackageViewer();
-            IList<PackageViewModel> packages = package_viewer.GetPackages(firstname, lastname);
+            PackageViewer package_viewer = new PackageViewer();
+            IList<PackageViewModel> packages = package_viewer.GetPackage(firstname, lastname);
 
             var model = new ReleasePackageModel();
             model.Packages = packages;
             model.FirstName = firstname;
             model.LastName = lastname;
 
-            NewPackageDTO dto = new NewPackageDTO();
+            PackageDTO dto = new PackageDTO();
             dto.Releasetime = DateTime.Now;
             //?? return View(model);
             return RedirectToAction("AfterPackageRelease", "Package");
